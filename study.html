@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Study Plan — Milan Sajiv</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #e6edf3; }
+    .navbar { background-color: #161b22; border-bottom: 1px solid #30363d; }
+    .navbar-brand { color: #e6edf3 !important; font-weight: 700; }
+    .nav-link { color: #8b949e !important; font-size: 0.88rem; }
+    .nav-link:hover, .nav-link.active { color: #58a6ff !important; }
+    .navbar-toggler { border-color: #30363d !important; padding: 6px 10px; }
+    .hero { background: linear-gradient(135deg, #161b22 0%, #0d1117 100%); padding: 80px 0 60px; border-bottom: 1px solid #30363d; }
+    .hero .eyebrow { color: #58a6ff; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .hero h1 { font-size: 2.6rem; font-weight: 700; }
+    .hero p { color: #8b949e; font-size: 1rem; max-width: 560px; margin-top: 12px; }
+    section { padding: 60px 0; }
+    .alt-bg { background-color: #161b22; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; }
+    .section-label { color: #58a6ff; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+    .section-title { font-size: 1.7rem; font-weight: 700; margin-bottom: 28px; }
+    .card-dark { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 28px; height: 100%; }
+    .card-dark h3 { color: #e6edf3; font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
+    .card-dark p, .card-dark li { color: #8b949e; font-size: 0.88rem; line-height: 1.6; }
+    .card-label { color: #58a6ff; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .module-row { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #21262d; align-items: flex-start; }
+    .module-row:last-child { border-bottom: none; }
+    .module-term { background-color: #21262d; color: #8b949e; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; min-width: 80px; text-align: center; margin-top: 2px; flex-shrink: 0; }
+    .module-name { color: #e6edf3; font-size: 0.9rem; flex: 1; }
+    .module-deadline { color: #484f58; font-size: 0.78rem; white-space: nowrap; margin-top: 2px; }
+    .module-status { font-size: 0.72rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+    .status-done { background-color: #1a3a2a; color: #3fb950; }
+    .status-current { background-color: #2d2a1a; color: #d29922; }
+    .status-future { background-color: #21262d; color: #484f58; }
+    .phase-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 24px; margin-bottom: 16px; }
+    .phase-card .phase-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .phase-num { width: 32px; height: 32px; border-radius: 8px; background-color: #21262d; color: #58a6ff; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .phase-title { font-size: 0.95rem; font-weight: 600; }
+    .phase-date { color: #484f58; font-size: 0.8rem; }
+    .phase-item { display: flex; gap: 8px; padding: 6px 0; font-size: 0.85rem; color: #8b949e; }
+    .phase-dot { width: 6px; height: 6px; border-radius: 50%; background-color: #58a6ff; margin-top: 6px; flex-shrink: 0; }
+    .weak-area { background-color: #0d1117; border: 1px solid #30363d; border-left: 3px solid #d29922; border-radius: 0 8px 8px 0; padding: 14px 16px; margin-bottom: 10px; }
+    .weak-area .wa-title { color: #e6edf3; font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; }
+    .weak-area .wa-desc { color: #8b949e; font-size: 0.82rem; line-height: 1.5; margin: 0; }
+    .resource-item { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid #21262d; font-size: 0.88rem; }
+    .resource-item:last-child { border-bottom: none; }
+    .resource-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+    .resource-name { color: #e6edf3; font-weight: 600; }
+    .resource-desc { color: #8b949e; font-size: 0.82rem; margin-top: 2px; }
+    .resource-when { color: #58a6ff; font-size: 0.75rem; margin-top: 3px; }
+    footer { background-color: #161b22; border-top: 1px solid #30363d; padding: 32px 0; text-align: center; }
+    footer p { color: #484f58; font-size: 0.85rem; margin: 0; }
+    footer a { color: #58a6ff; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Milan Sajiv</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
+      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
+      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="workout.html">Workout</a>
+        <a class="nav-link" href="nutrition.html">Nutrition</a>
+        <a class="nav-link" href="schedule.html">Schedule</a>
+        <a class="nav-link" href="goals.html">Goals</a>
+        <a class="nav-link active" href="study.html">Study</a>
+        <a class="nav-link" href="progress.html">Progress</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <div class="eyebrow">Academic & Self-Directed</div>
+    <h1>Study Plan</h1>
+    <p>BSc Data Science degree modules mapped against a self-directed supplementary programme — building toward Imperial College London and beyond.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="row g-4 mb-5">
+      <div class="col-lg-4">
+        <div class="card-dark">
+          <div class="card-label">Background</div>
+          <h3>Mathematical foundations</h3>
+          <p>A-level Mathematics, Further Mathematics, and Physics. Some university-level physics (dropped out of Physics with Astrophysics Year 1). Strong analytical base — new concepts are anchored to maths and physics analogies.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-dark">
+          <div class="card-label">Learning style</div>
+          <h3>Foundations first</h3>
+          <p>Needs to understand the why before committing to the how. Learns best through project-based application of real problems. Dislikes jargon without grounding. Maths analogies work well.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-dark">
+          <div class="card-label">Study time</div>
+          <h3>~22–23 hrs/week</h3>
+          <p>Thursday (6.5 hrs, full study day), Monday and Friday (3.5 hrs each), Saturday (5–6 hrs), Sunday evening (2 hrs). Tuesday and Wednesday limited due to office commute.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Degree modules -->
+    <div class="section-label">Degree</div>
+    <div class="section-title" style="font-size:1.4rem; margin-bottom:20px;">BPP — BSc Data Science module progression</div>
+
+    <div class="card-dark mb-5">
+      <div class="module-row">
+        <span class="module-term">Y1 T1</span>
+        <div>
+          <div class="module-name">Data Infrastructure and Tools + Data Engineering</div>
+          <div class="module-deadline">Submitted Aug 2025</div>
+        </div>
+        <span class="module-status status-done">Done</span>
+      </div>
+      <div class="module-row">
+        <span class="module-term">Y1 T2</span>
+        <div>
+          <div class="module-name">Data Visualisation and Dashboards + Data Analytics</div>
+          <div class="module-deadline">Submitted Jan 2026</div>
+        </div>
+        <span class="module-status status-done">Done</span>
+      </div>
+      <div class="module-row">
+        <span class="module-term">Y1 T3</span>
+        <div>
+          <div class="module-name">Data Science Professional Practice</div>
+          <div class="module-deadline">Due 13 May 2026</div>
+        </div>
+        <span class="module-status status-current">Current</span>
+      </div>
+      <div class="module-row">
+        <span class="module-term">Y2 T1</span>
+        <div>
+          <div class="module-name">Software Engineering + Project Management</div>
+          <div class="module-deadline">Due Aug 2026</div>
+        </div>
+        <span class="module-status status-future">Upcoming</span>
+      </div>
+      <div class="module-row">
+        <span class="module-term">Y2 T2</span>
+        <div>
+          <div class="module-name">Machine Learning + Unstructured Data</div>
+          <div class="module-deadline">Due Jan 2027</div>
+        </div>
+        <span class="module-status status-future">Upcoming</span>
+      </div>
+      <div class="module-row">
+        <span class="module-term">Y2 T3</span>
+        <div>
+          <div class="module-name">Data Science Professional Development</div>
+          <div class="module-deadline">Due May 2027</div>
+        </div>
+        <span class="module-status status-future">Upcoming</span>
+      </div>
+      <div class="module-row">
+        <span class="module-term">Y3 T1</span>
+        <div>
+          <div class="module-name">Big Data + AI and Deep Learning</div>
+          <div class="module-deadline">Due Aug 2027</div>
+        </div>
+        <span class="module-status status-future">Upcoming</span>
+      </div>
+      <div class="module-row">
+        <span class="module-term">Y3 T2+3</span>
+        <div>
+          <div class="module-name">End Point Assessment (EPA)</div>
+          <div class="module-deadline">Sessions end Apr 2028</div>
+        </div>
+        <span class="module-status status-future">Upcoming</span>
+      </div>
+    </div>
+
+    <!-- Weak areas -->
+    <div class="section-label">Current weak areas</div>
+    <div class="section-title" style="font-size:1.4rem; margin-bottom:20px;">Tracked from study sessions</div>
+    <div class="weak-area">
+      <div class="wa-title">Dict comprehension syntax</div>
+      <div class="wa-desc">Repeated confusion between <code style="color:#58a6ff;">:</code> (dict) and <code style="color:#58a6ff;">,</code> (set). Also tendency to write comprehensions outside a <code style="color:#58a6ff;">def</code> when a function is asked for.</div>
+    </div>
+    <div class="weak-area">
+      <div class="wa-title">Iterating over a list of dicts</div>
+      <div class="wa-desc">When iterating, confused the full list with individual items. Tried calling <code style="color:#58a6ff;">.values()</code> and <code style="color:#58a6ff;">.items()</code> on the list itself rather than on each dict element. Improving but not yet solid.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Self-directed plan -->
+<section class="alt-bg">
+  <div class="container">
+    <div class="section-label">Self-directed</div>
+    <div class="section-title">Supplementary study plan — Imperial preparation</div>
+    <p style="color:#8b949e; margin-bottom:36px; font-size:0.92rem;">Mapped to inter-term gaps and Thursday study day windows. Everything below is on top of the BPP degree.</p>
+
+    <div class="phase-card">
+      <div class="phase-header"><div class="phase-num">1</div><div><div class="phase-title">Now — May 2026</div><div class="phase-date">Current portfolio submission</div></div></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>All focus on Year 1 Term 3 — first class submission. Nothing supplementary until submitted.</span></div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header"><div class="phase-num">2</div><div><div class="phase-title">May — Aug 2026</div><div class="phase-date">Inter-term gap + Year 2 Term 1</div></div></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>GitHub set up (done ✓) — F1 project published (done ✓)</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Linear algebra begins: vectors, matrices, matrix multiplication (Deisenroth Ch.2)</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>SQL from the ground up — Thursday mornings during Year 2 Term 1</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Software Engineering module — use to learn Git and software design properly</span></div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header"><div class="phase-num">3</div><div><div class="phase-title">Sep — Jan 2027</div><div class="phase-date">Year 2 Term 2 — Machine Learning + Unstructured Data</div></div></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Linear algebra complete: eigenvectors, eigendecomposition, SVD (Aug–Oct gap)</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Probability begins: Bayes, Gaussian distributions, MLE (Deisenroth Ch.6)</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>AIMA Chapters 19–21 alongside ML lectures</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Research paper reading: 1 per week — starts Oct 2026</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Second independent project begins</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Kaggle account + first competition</span></div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header"><div class="phase-num">4</div><div><div class="phase-title">Jan — Jun 2027</div><div class="phase-date">Year 2 Term 3 + inter-term gap</div></div></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Probability complete: information theory, statistical estimation (Deisenroth Ch.9)</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Calculus for ML: gradients, chain rule, backpropagation (Deisenroth Ch.5)</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>PyTorch foundations: fast.ai Part 1</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Deep Learning Specialisation (Andrew Ng) begins</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Second project complete and published</span></div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header"><div class="phase-num">5</div><div><div class="phase-title">Jun — Aug 2027</div><div class="phase-date">Year 3 Term 1 — Big Data + AI & Deep Learning</div></div></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>AIMA: relevant chapters alongside Big Data and AI/DL lectures</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>PyTorch depth — implement models from scratch</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Third project: NLP or Computer Vision — complete and publish</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Personal statement — first draft</span></div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-header"><div class="phase-num">6</div><div><div class="phase-title">Sep 2027 — Apr 2028</div><div class="phase-date">Year 3 EPA + application</div></div></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>AIMA systematic cover-to-cover read: 1 chapter/2 weeks</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>CS theory: algorithms, data structures, computational complexity (MIT OCW 6.006)</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Portfolio polished — all 3 projects clean and documented</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>Imperial personal statement finalised</span></div>
+      <div class="phase-item"><div class="phase-dot"></div><span>All 5 applications submitted October 2027</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Resources -->
+<section>
+  <div class="container">
+    <div class="section-label">Resources</div>
+    <div class="section-title" style="font-size:1.4rem; margin-bottom:20px;">What I'm using</div>
+    <div class="card-dark">
+      <div class="resource-item">
+        <div class="resource-icon">📘</div>
+        <div>
+          <div class="resource-name">Mathematics for Machine Learning — Deisenroth, Faisal & Ong</div>
+          <div class="resource-desc">Free PDF. Covers exactly what Imperial's core module teaches: linear algebra, calculus, probability. The primary maths resource.</div>
+          <div class="resource-when">Starts: May 2026</div>
+        </div>
+      </div>
+      <div class="resource-item">
+        <div class="resource-icon">📗</div>
+        <div>
+          <div class="resource-name">AIMA — Russell & Norvig, 4th Edition</div>
+          <div class="resource-desc">Owned. The definitive AI textbook. Read in layers — chapters 1–2 now, ML chapters alongside Y2 T2, systematic cover-to-cover in Year 3 EPA period.</div>
+          <div class="resource-when">Chapters 1–2: now · Systematic read: Sep 2027</div>
+        </div>
+      </div>
+      <div class="resource-item">
+        <div class="resource-icon">🎓</div>
+        <div>
+          <div class="resource-name">DeepLearning.AI Specialisations — Andrew Ng</div>
+          <div class="resource-desc">ML Specialisation, Deep Learning Specialisation (5 courses), NLP or MLOps Specialisation. Internationally recognised credentials.</div>
+          <div class="resource-when">Starts: Oct 2026</div>
+        </div>
+      </div>
+      <div class="resource-item">
+        <div class="resource-icon">🔥</div>
+        <div>
+          <div class="resource-name">fast.ai — Practical Deep Learning</div>
+          <div class="resource-desc">Practical PyTorch course. Top-down approach — build things first, understand theory later. Complements Deisenroth's bottom-up approach.</div>
+          <div class="resource-when">Starts: Jan 2027</div>
+        </div>
+      </div>
+      <div class="resource-item">
+        <div class="resource-icon">📐</div>
+        <div>
+          <div class="resource-name">MIT OCW 6.006 — Introduction to Algorithms</div>
+          <div class="resource-desc">Free. Algorithms, data structures, computational complexity. Needed to strengthen the "substantial computing component" for Imperial.</div>
+          <div class="resource-when">Starts: Sep 2027</div>
+        </div>
+      </div>
+      <div class="resource-item">
+        <div class="resource-icon">🏆</div>
+        <div>
+          <div class="resource-name">Kaggle</div>
+          <div class="resource-desc">Real ML competitions with verifiable results. Target: 2 competitions, top 20–25% finish on at least one. Rankings visible to admissions tutors.</div>
+          <div class="resource-when">Starts: Oct 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p><a href="index.html">← Back to Milan Sajiv</a></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
