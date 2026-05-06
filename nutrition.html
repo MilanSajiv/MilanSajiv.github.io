@@ -7,59 +7,60 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link href="site.css" rel="stylesheet"/>
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #e6edf3; }
-    .navbar { background-color: #161b22; border-bottom: 1px solid #30363d; }
-    .navbar-brand { color: #e6edf3 !important; font-weight: 700; }
-    .nav-link { color: #8b949e !important; font-size: 0.9rem; }
-    .nav-link:hover, .nav-link.active { color: #58a6ff !important; }
-    .dropdown-menu { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 6px; margin-top: 4px; }
-    .dropdown-item { color: #8b949e; border-radius: 4px; font-size: 0.88rem; padding: 8px 14px; }
-    .dropdown-item:hover, .dropdown-item:focus { background-color: #21262d; color: #58a6ff; }
-    .hero { background: linear-gradient(135deg, #161b22 0%, #0d1117 100%); padding: 80px 0 60px; border-bottom: 1px solid #30363d; }
-    .hero .eyebrow { color: #58a6ff; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    body { font-family: 'Inter', sans-serif; background-color: #0d0a14; color: #f0eafa; }
+    .navbar { background-color: #16131f; border-bottom: 1px solid #2d2040; }
+    .navbar-brand { color: #f0eafa !important; font-weight: 700; }
+    .nav-link { color: #8b7eaa !important; font-size: 0.9rem; }
+    .nav-link:hover, .nav-link.active { color: #a78bfa !important; }
+    .dropdown-menu { background-color: #16131f; border: 1px solid #2d2040; border-radius: 8px; padding: 6px; margin-top: 4px; }
+    .dropdown-item { color: #8b7eaa; border-radius: 4px; font-size: 0.88rem; padding: 8px 14px; }
+    .dropdown-item:hover, .dropdown-item:focus { background-color: #1e1a2e; color: #a78bfa; }
+    .hero { background: linear-gradient(135deg, #16131f 0%, #0d0a14 100%); padding: 80px 0 60px; border-bottom: 1px solid #2d2040; }
+    .hero .eyebrow { color: #a78bfa; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
     .hero h1 { font-size: 2.6rem; font-weight: 700; }
-    .hero p { color: #8b949e; font-size: 1rem; max-width: 560px; margin-top: 12px; }
+    .hero p { color: #8b7eaa; font-size: 1rem; max-width: 560px; margin-top: 12px; }
     section { padding: 60px 0; }
-    .section-label { color: #58a6ff; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+    .section-label { color: #a78bfa; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
     .section-title { font-size: 1.7rem; font-weight: 700; margin-bottom: 32px; }
-    .stat-strip { background-color: #161b22; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; padding: 36px 0; }
+    .stat-strip { background-color: #16131f; border-top: 1px solid #2d2040; border-bottom: 1px solid #2d2040; padding: 36px 0; }
     .stat-box { text-align: center; }
-    .stat-box .number { font-size: 2rem; font-weight: 700; color: #58a6ff; }
-    .stat-box .label { color: #8b949e; font-size: 0.82rem; margin-top: 4px; }
-    .day-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
-    .day-card .day-header { background-color: #21262d; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; }
+    .stat-box .number { font-size: 2rem; font-weight: 700; color: #a78bfa; }
+    .stat-box .label { color: #8b7eaa; font-size: 0.82rem; margin-top: 4px; }
+    .day-card { background-color: #16131f; border: 1px solid #2d2040; border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+    .day-card .day-header { background-color: #1e1a2e; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; }
     .day-card .day-header h3 { margin: 0; font-size: 1.1rem; font-weight: 700; }
-    .day-card .day-header .day-tag { background-color: #0d1117; color: #58a6ff; border: 1px solid #30363d; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+    .day-card .day-header .day-tag { background-color: #0d0a14; color: #a78bfa; border: 1px solid #2d2040; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
     .day-card .day-body { padding: 0 28px 24px; }
-    .meal-row { display: flex; padding: 14px 0; border-bottom: 1px solid #21262d; gap: 16px; }
+    .meal-row { display: flex; padding: 14px 0; border-bottom: 1px solid #1e1a2e; gap: 16px; }
     .meal-row:last-child { border-bottom: none; }
-    .meal-time { color: #58a6ff; font-size: 0.82rem; font-weight: 600; min-width: 80px; padding-top: 2px; }
-    .meal-name { color: #e6edf3; font-size: 0.9rem; flex: 1; }
+    .meal-time { color: #a78bfa; font-size: 0.82rem; font-weight: 600; min-width: 80px; padding-top: 2px; }
+    .meal-name { color: #f0eafa; font-size: 0.9rem; flex: 1; }
     .meal-stats { display: flex; gap: 16px; }
     .meal-protein { color: #3fb950; font-size: 0.82rem; min-width: 50px; text-align: right; }
-    .meal-cal { color: #8b949e; font-size: 0.82rem; min-width: 60px; text-align: right; }
-    .day-totals { background-color: #0d1117; margin: 0 -28px; padding: 16px 28px; display: flex; gap: 24px; }
-    .day-total-item .label { color: #484f58; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
-    .day-total-item .value { color: #e6edf3; font-size: 1rem; font-weight: 700; margin-top: 2px; }
-    .day-total-item .value span { color: #58a6ff; }
-    .restriction-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 24px; height: 100%; }
-    .restriction-card h4 { color: #e6edf3; font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
-    .restriction-card p, .restriction-card li { color: #8b949e; font-size: 0.88rem; line-height: 1.6; }
-    .swap-table { background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; overflow: hidden; }
+    .meal-cal { color: #8b7eaa; font-size: 0.82rem; min-width: 60px; text-align: right; }
+    .day-totals { background-color: #0d0a14; margin: 0 -28px; padding: 16px 28px; display: flex; gap: 24px; }
+    .day-total-item .label { color: #3d3456; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+    .day-total-item .value { color: #f0eafa; font-size: 1rem; font-weight: 700; margin-top: 2px; }
+    .day-total-item .value span { color: #a78bfa; }
+    .restriction-card { background-color: #16131f; border: 1px solid #2d2040; border-radius: 10px; padding: 24px; height: 100%; }
+    .restriction-card h4 { color: #f0eafa; font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+    .restriction-card p, .restriction-card li { color: #8b7eaa; font-size: 0.88rem; line-height: 1.6; }
+    .swap-table { background-color: #16131f; border: 1px solid #2d2040; border-radius: 10px; overflow: hidden; }
     .swap-table table { width: 100%; margin: 0; }
-    .swap-table th { background-color: #21262d; color: #8b949e; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 12px 16px; }
-    .swap-table td { padding: 12px 16px; border-bottom: 1px solid #21262d; font-size: 0.88rem; }
+    .swap-table th { background-color: #1e1a2e; color: #8b7eaa; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 12px 16px; }
+    .swap-table td { padding: 12px 16px; border-bottom: 1px solid #1e1a2e; font-size: 0.88rem; }
     .swap-table td:first-child { color: #d29922; }
     .swap-table td:last-child { color: #3fb950; }
     .swap-table tr:last-child td { border-bottom: none; }
-    .supp-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 24px; }
-    .supp-card h4 { color: #e6edf3; font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
-    .supp-card p { color: #8b949e; font-size: 0.88rem; line-height: 1.6; margin: 0; }
-    .alt-bg { background-color: #161b22; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; }
-    footer { background-color: #161b22; border-top: 1px solid #30363d; padding: 32px 0; text-align: center; }
-    footer p { color: #484f58; font-size: 0.85rem; margin: 0; }
-    footer a { color: #58a6ff; text-decoration: none; }
+    .supp-card { background-color: #16131f; border: 1px solid #2d2040; border-radius: 10px; padding: 24px; }
+    .supp-card h4 { color: #f0eafa; font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
+    .supp-card p { color: #8b7eaa; font-size: 0.88rem; line-height: 1.6; margin: 0; }
+    .alt-bg { background-color: #16131f; border-top: 1px solid #2d2040; border-bottom: 1px solid #2d2040; }
+    footer { background-color: #16131f; border-top: 1px solid #2d2040; padding: 32px 0; text-align: center; }
+    footer p { color: #3d3456; font-size: 0.85rem; margin: 0; }
+    footer a { color: #a78bfa; text-decoration: none; }
   </style>
 </head>
 <body>
@@ -67,10 +68,10 @@
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
     <a class="navbar-brand" href="index.html">Milan Sajiv</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" style="border-color:#30363d; padding:6px 10px;">
-      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
-      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
-      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" style="border-color:#2d2040; padding:6px 10px;">
+      <span style="display:block;width:20px;height:2px;background:#f0eafa;margin:4px 0;"></span>
+      <span style="display:block;width:20px;height:2px;background:#f0eafa;margin:4px 0;"></span>
+      <span style="display:block;width:20px;height:2px;background:#f0eafa;margin:4px 0;"></span>
     </button>
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto">
@@ -385,5 +386,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="animations.js"></script>
 </body>
 </html>

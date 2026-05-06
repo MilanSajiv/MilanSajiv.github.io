@@ -7,57 +7,58 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link href="site.css" rel="stylesheet"/>
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #e6edf3; }
-    .navbar { background-color: #161b22; border-bottom: 1px solid #30363d; }
-    .navbar-brand { color: #e6edf3 !important; font-weight: 700; }
-    .nav-link { color: #8b949e !important; font-size: 0.9rem; }
-    .nav-link:hover, .nav-link.active { color: #58a6ff !important; }
-    .dropdown-menu { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 6px; margin-top: 4px; }
-    .dropdown-item { color: #8b949e; border-radius: 4px; font-size: 0.88rem; padding: 8px 14px; }
-    .dropdown-item:hover, .dropdown-item:focus { background-color: #21262d; color: #58a6ff; }
-    .hero { background: linear-gradient(135deg, #161b22 0%, #0d1117 100%); padding: 80px 0 60px; border-bottom: 1px solid #30363d; }
-    .hero .eyebrow { color: #58a6ff; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    body { font-family: 'Inter', sans-serif; background-color: #0d0a14; color: #f0eafa; }
+    .navbar { background-color: #16131f; border-bottom: 1px solid #2d2040; }
+    .navbar-brand { color: #f0eafa !important; font-weight: 700; }
+    .nav-link { color: #8b7eaa !important; font-size: 0.9rem; }
+    .nav-link:hover, .nav-link.active { color: #a78bfa !important; }
+    .dropdown-menu { background-color: #16131f; border: 1px solid #2d2040; border-radius: 8px; padding: 6px; margin-top: 4px; }
+    .dropdown-item { color: #8b7eaa; border-radius: 4px; font-size: 0.88rem; padding: 8px 14px; }
+    .dropdown-item:hover, .dropdown-item:focus { background-color: #1e1a2e; color: #a78bfa; }
+    .hero { background: linear-gradient(135deg, #16131f 0%, #0d0a14 100%); padding: 80px 0 60px; border-bottom: 1px solid #2d2040; }
+    .hero .eyebrow { color: #a78bfa; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
     .hero h1 { font-size: 2.6rem; font-weight: 700; }
-    .hero p { color: #8b949e; font-size: 1rem; max-width: 560px; margin-top: 12px; }
+    .hero p { color: #8b7eaa; font-size: 1rem; max-width: 560px; margin-top: 12px; }
     section { padding: 60px 0; }
-    .section-label { color: #58a6ff; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+    .section-label { color: #a78bfa; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
     .section-title { font-size: 1.7rem; font-weight: 700; margin-bottom: 32px; }
-    .day-block { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 28px; margin-bottom: 20px; }
+    .day-block { background-color: #16131f; border: 1px solid #2d2040; border-radius: 12px; padding: 28px; margin-bottom: 20px; }
     .day-block .day-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
     .day-name { font-size: 1.2rem; font-weight: 700; }
     .day-tag { padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
     .tag-gym { background-color: #1a3a2a; color: #3fb950; }
-    .tag-office { background-color: #1c3a5e; color: #58a6ff; }
+    .tag-office { background-color: #1c3a5e; color: #a78bfa; }
     .tag-padel { background-color: #2d1a4a; color: #bc8cff; }
     .tag-study { background-color: #3a2a1a; color: #d29922; }
-    .tag-free { background-color: #21262d; color: #8b949e; }
-    .time-block { display: flex; gap: 16px; padding: 10px 0; border-bottom: 1px solid #21262d; }
+    .tag-free { background-color: #1e1a2e; color: #8b7eaa; }
+    .time-block { display: flex; gap: 16px; padding: 10px 0; border-bottom: 1px solid #1e1a2e; }
     .time-block:last-child { border-bottom: none; }
-    .time { color: #58a6ff; font-size: 0.8rem; font-weight: 600; min-width: 90px; padding-top: 2px; }
+    .time { color: #a78bfa; font-size: 0.8rem; font-weight: 600; min-width: 90px; padding-top: 2px; }
     .activity { font-size: 0.88rem; }
-    .activity strong { color: #e6edf3; }
-    .activity span { color: #8b949e; }
-    .hours-badge { background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 4px 10px; font-size: 0.78rem; color: #8b949e; margin-left: auto; white-space: nowrap; }
-    .summary-table { background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; overflow: hidden; }
+    .activity strong { color: #f0eafa; }
+    .activity span { color: #8b7eaa; }
+    .hours-badge { background-color: #0d0a14; border: 1px solid #2d2040; border-radius: 6px; padding: 4px 10px; font-size: 0.78rem; color: #8b7eaa; margin-left: auto; white-space: nowrap; }
+    .summary-table { background-color: #16131f; border: 1px solid #2d2040; border-radius: 10px; overflow: hidden; }
     .summary-table table { width: 100%; margin: 0; }
-    .summary-table th { background-color: #21262d; color: #8b949e; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 12px 16px; }
-    .summary-table td { padding: 12px 16px; border-bottom: 1px solid #21262d; font-size: 0.88rem; }
-    .summary-table td:first-child { color: #e6edf3; font-weight: 600; }
-    .summary-table td:nth-child(2) { color: #8b949e; }
-    .summary-table td:last-child { color: #58a6ff; font-weight: 600; }
+    .summary-table th { background-color: #1e1a2e; color: #8b7eaa; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 12px 16px; }
+    .summary-table td { padding: 12px 16px; border-bottom: 1px solid #1e1a2e; font-size: 0.88rem; }
+    .summary-table td:first-child { color: #f0eafa; font-weight: 600; }
+    .summary-table td:nth-child(2) { color: #8b7eaa; }
+    .summary-table td:last-child { color: #a78bfa; font-weight: 600; }
     .summary-table tr:last-child td { border-bottom: none; }
-    .non-neg { background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 24px; }
-    .non-neg h4 { color: #e6edf3; font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
-    .non-neg-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #21262d; font-size: 0.88rem; }
+    .non-neg { background-color: #16131f; border: 1px solid #2d2040; border-radius: 10px; padding: 24px; }
+    .non-neg h4 { color: #f0eafa; font-size: 1rem; font-weight: 600; margin-bottom: 12px; }
+    .non-neg-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid #1e1a2e; font-size: 0.88rem; }
     .non-neg-item:last-child { border-bottom: none; }
-    .non-neg-item .dot { width: 8px; height: 8px; border-radius: 50%; background-color: #58a6ff; flex-shrink: 0; }
-    .non-neg-item span { color: #8b949e; }
-    .non-neg-item strong { color: #e6edf3; }
-    .alt-bg { background-color: #161b22; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; }
-    footer { background-color: #161b22; border-top: 1px solid #30363d; padding: 32px 0; text-align: center; }
-    footer p { color: #484f58; font-size: 0.85rem; margin: 0; }
-    footer a { color: #58a6ff; text-decoration: none; }
+    .non-neg-item .dot { width: 8px; height: 8px; border-radius: 50%; background-color: #a78bfa; flex-shrink: 0; }
+    .non-neg-item span { color: #8b7eaa; }
+    .non-neg-item strong { color: #f0eafa; }
+    .alt-bg { background-color: #16131f; border-top: 1px solid #2d2040; border-bottom: 1px solid #2d2040; }
+    footer { background-color: #16131f; border-top: 1px solid #2d2040; padding: 32px 0; text-align: center; }
+    footer p { color: #3d3456; font-size: 0.85rem; margin: 0; }
+    footer a { color: #a78bfa; text-decoration: none; }
   </style>
 </head>
 <body>
@@ -65,10 +66,10 @@
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
     <a class="navbar-brand" href="index.html">Milan Sajiv</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" style="border-color:#30363d; padding:6px 10px;">
-      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
-      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
-      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" style="border-color:#2d2040; padding:6px 10px;">
+      <span style="display:block;width:20px;height:2px;background:#f0eafa;margin:4px 0;"></span>
+      <span style="display:block;width:20px;height:2px;background:#f0eafa;margin:4px 0;"></span>
+      <span style="display:block;width:20px;height:2px;background:#f0eafa;margin:4px 0;"></span>
     </button>
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto">
@@ -317,5 +318,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="animations.js"></script>
 </body>
 </html>

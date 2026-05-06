@@ -7,108 +7,109 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <link href="site.css" rel="stylesheet"/>
   <style>
     * { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #e6edf3; margin: 0; }
+    body { font-family: 'Inter', sans-serif; background-color: #0d0a14; color: #f0eafa; margin: 0; }
 
     /* Nav */
-    .navbar { background-color: #161b22; border-bottom: 1px solid #30363d; }
-    .navbar-brand { color: #e6edf3 !important; font-weight: 700; font-size: 1.1rem; }
-    .nav-link { color: #8b949e !important; font-size: 0.9rem; }
-    .nav-link:hover, .nav-link.active { color: #58a6ff !important; }
-    .navbar-toggler { border-color: #30363d !important; padding: 6px 10px; }
-    .dropdown-menu { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 6px; margin-top: 4px; }
-    .dropdown-item { color: #8b949e; border-radius: 4px; font-size: 0.88rem; padding: 8px 14px; }
-    .dropdown-item:hover, .dropdown-item:focus { background-color: #21262d; color: #58a6ff; }
+    .navbar { background-color: #16131f; border-bottom: 1px solid #2d2040; }
+    .navbar-brand { color: #f0eafa !important; font-weight: 700; font-size: 1.1rem; }
+    .nav-link { color: #8b7eaa !important; font-size: 0.9rem; }
+    .nav-link:hover, .nav-link.active { color: #a78bfa !important; }
+    .navbar-toggler { border-color: #2d2040 !important; padding: 6px 10px; }
+    .dropdown-menu { background-color: #16131f; border: 1px solid #2d2040; border-radius: 8px; padding: 6px; margin-top: 4px; }
+    .dropdown-item { color: #8b7eaa; border-radius: 4px; font-size: 0.88rem; padding: 8px 14px; }
+    .dropdown-item:hover, .dropdown-item:focus { background-color: #1e1a2e; color: #a78bfa; }
 
     /* Hero */
-    .hero { background: linear-gradient(135deg, #161b22 0%, #0d1117 100%); padding: 110px 0 90px; border-bottom: 1px solid #30363d; }
-    .hero .eyebrow { color: #58a6ff; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+    .hero { background: linear-gradient(135deg, #16131f 0%, #0d0a14 100%); padding: 110px 0 90px; border-bottom: 1px solid #2d2040; }
+    .hero .eyebrow { color: #a78bfa; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
     .hero h1 { font-size: 3.2rem; font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
-    .hero h1 span { color: #58a6ff; }
-    .hero p { font-size: 1.1rem; color: #8b949e; max-width: 580px; line-height: 1.7; }
-    .badge-tech { background-color: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin: 3px; }
-    .btn-main { background-color: #238636; border: none; color: #fff; padding: 11px 26px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-block; margin-right: 12px; font-size: 0.95rem; }
-    .btn-main:hover { background-color: #2ea043; color: #fff; }
-    .btn-ghost { background-color: transparent; border: 1px solid #30363d; color: #e6edf3; padding: 11px 26px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-block; font-size: 0.95rem; }
-    .btn-ghost:hover { background-color: #21262d; color: #e6edf3; border-color: #58a6ff; }
+    .hero h1 span { color: #a78bfa; }
+    .hero p { font-size: 1.1rem; color: #8b7eaa; max-width: 580px; line-height: 1.7; }
+    .badge-tech { background-color: #1e1a2e; color: #8b7eaa; border: 1px solid #2d2040; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin: 3px; }
+    .btn-main { background-color: #7c3aed; border: none; color: #fff; padding: 11px 26px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-block; margin-right: 12px; font-size: 0.95rem; }
+    .btn-main:hover { background-color: #8b5cf6; color: #fff; }
+    .btn-ghost { background-color: transparent; border: 1px solid #2d2040; color: #f0eafa; padding: 11px 26px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-block; font-size: 0.95rem; }
+    .btn-ghost:hover { background-color: #1e1a2e; color: #f0eafa; border-color: #a78bfa; }
 
     /* Sections */
     section { padding: 80px 0; }
-    .section-label { color: #58a6ff; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+    .section-label { color: #a78bfa; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
     .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
-    .section-sub { color: #8b949e; font-size: 1rem; margin-bottom: 48px; }
+    .section-sub { color: #8b7eaa; font-size: 1rem; margin-bottom: 48px; }
 
     /* Cards */
-    .card-dark { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 28px; height: 100%; transition: border-color 0.2s; }
-    .card-dark:hover { border-color: #58a6ff; }
-    .card-dark .card-label { color: #58a6ff; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-    .card-dark h3 { color: #e6edf3; font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
-    .card-dark p { color: #8b949e; font-size: 0.92rem; line-height: 1.6; margin: 0; }
+    .card-dark { background-color: #16131f; border: 1px solid #2d2040; border-radius: 12px; padding: 28px; height: 100%; transition: border-color 0.2s; }
+    .card-dark:hover { border-color: #a78bfa; }
+    .card-dark .card-label { color: #a78bfa; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    .card-dark h3 { color: #f0eafa; font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
+    .card-dark p { color: #8b7eaa; font-size: 0.92rem; line-height: 1.6; margin: 0; }
 
     /* Stat strip */
-    .stat-strip { background-color: #161b22; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; padding: 40px 0; }
+    .stat-strip { background-color: #16131f; border-top: 1px solid #2d2040; border-bottom: 1px solid #2d2040; padding: 40px 0; }
     .stat-box { text-align: center; }
-    .stat-box .number { font-size: 2.2rem; font-weight: 700; color: #58a6ff; }
-    .stat-box .label { color: #8b949e; font-size: 0.85rem; margin-top: 4px; }
+    .stat-box .number { font-size: 2.2rem; font-weight: 700; color: #a78bfa; }
+    .stat-box .label { color: #8b7eaa; font-size: 0.85rem; margin-top: 4px; }
 
     /* Agent cards */
-    .agent-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 32px; height: 100%; }
+    .agent-card { background-color: #16131f; border: 1px solid #2d2040; border-radius: 12px; padding: 32px; height: 100%; }
     .agent-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 16px; }
     .agent-icon.blue { background-color: #1c3a5e; }
     .agent-icon.green { background-color: #1a3a2a; }
     .agent-icon.purple { background-color: #2d1a4a; }
-    .agent-card h3 { color: #e6edf3; font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
-    .agent-card p { color: #8b949e; font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px; }
-    .agent-tag { background-color: #0d1117; border: 1px solid #30363d; color: #8b949e; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; margin-right: 4px; margin-bottom: 4px; display: inline-block; }
+    .agent-card h3 { color: #f0eafa; font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    .agent-card p { color: #8b7eaa; font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px; }
+    .agent-tag { background-color: #0d0a14; border: 1px solid #2d2040; color: #8b7eaa; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; margin-right: 4px; margin-bottom: 4px; display: inline-block; }
 
     /* Timeline */
     .timeline { position: relative; padding-left: 32px; }
-    .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #58a6ff, #30363d); }
+    .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #a78bfa, #2d2040); }
     .timeline-item { position: relative; margin-bottom: 36px; }
-    .timeline-item::before { content: ''; position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background-color: #58a6ff; border: 2px solid #0d1117; }
-    .timeline-item.future::before { background-color: #30363d; }
-    .timeline-item .year { color: #58a6ff; font-size: 0.8rem; font-weight: 600; margin-bottom: 4px; }
-    .timeline-item.future .year { color: #484f58; }
-    .timeline-item h4 { color: #e6edf3; font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
-    .timeline-item.future h4 { color: #8b949e; }
-    .timeline-item p { color: #8b949e; font-size: 0.88rem; margin: 0; }
+    .timeline-item::before { content: ''; position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background-color: #a78bfa; border: 2px solid #0d0a14; }
+    .timeline-item.future::before { background-color: #2d2040; }
+    .timeline-item .year { color: #a78bfa; font-size: 0.8rem; font-weight: 600; margin-bottom: 4px; }
+    .timeline-item.future .year { color: #3d3456; }
+    .timeline-item h4 { color: #f0eafa; font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+    .timeline-item.future h4 { color: #8b7eaa; }
+    .timeline-item p { color: #8b7eaa; font-size: 0.88rem; margin: 0; }
 
     /* Project cards */
-    .project-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 28px; height: 100%; transition: border-color 0.2s, transform 0.2s; }
-    .project-card:hover { border-color: #58a6ff; transform: translateY(-2px); }
+    .project-card { background-color: #16131f; border: 1px solid #2d2040; border-radius: 12px; padding: 28px; height: 100%; transition: border-color 0.2s, transform 0.2s; }
+    .project-card:hover { border-color: #a78bfa; transform: translateY(-2px); }
     .project-status { font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 14px; }
     .status-live { background-color: #1a3a2a; color: #3fb950; }
     .status-progress { background-color: #2d2a1a; color: #d29922; }
-    .status-planned { background-color: #21262d; color: #8b949e; }
-    .project-card h3 { color: #e6edf3; font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
-    .project-card p { color: #8b949e; font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px; }
-    .project-link { color: #58a6ff; font-size: 0.85rem; text-decoration: none; }
-    .project-link:hover { text-decoration: underline; color: #58a6ff; }
+    .status-planned { background-color: #1e1a2e; color: #8b7eaa; }
+    .project-card h3 { color: #f0eafa; font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+    .project-card p { color: #8b7eaa; font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px; }
+    .project-link { color: #a78bfa; font-size: 0.85rem; text-decoration: none; }
+    .project-link:hover { text-decoration: underline; color: #a78bfa; }
 
     /* Memory system */
     .memory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
-    .memory-item { background-color: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 14px; }
+    .memory-item { background-color: #0d0a14; border: 1px solid #2d2040; border-radius: 8px; padding: 14px; }
     .memory-item .mem-icon { font-size: 1.2rem; margin-bottom: 8px; }
-    .memory-item .mem-name { color: #e6edf3; font-size: 0.8rem; font-weight: 600; font-family: monospace; }
-    .memory-item .mem-desc { color: #484f58; font-size: 0.72rem; margin-top: 3px; }
+    .memory-item .mem-name { color: #f0eafa; font-size: 0.8rem; font-weight: 600; font-family: monospace; }
+    .memory-item .mem-desc { color: #3d3456; font-size: 0.72rem; margin-top: 3px; }
 
     /* Imperial section */
-    .imperial-banner { background: linear-gradient(135deg, #1c2a3a 0%, #161b22 100%); border: 1px solid #30363d; border-radius: 12px; padding: 40px; }
+    .imperial-banner { background: linear-gradient(135deg, #1c2a3a 0%, #16131f 100%); border: 1px solid #2d2040; border-radius: 12px; padding: 40px; }
     .progress-item { margin-bottom: 16px; }
     .progress-label { display: flex; justify-content: space-between; margin-bottom: 6px; }
-    .progress-label span:first-child { color: #e6edf3; font-size: 0.88rem; }
-    .progress-label span:last-child { color: #58a6ff; font-size: 0.88rem; font-weight: 600; }
-    .progress-bar-bg { background-color: #21262d; border-radius: 4px; height: 6px; }
-    .progress-bar-fill { background-color: #58a6ff; border-radius: 4px; height: 6px; }
+    .progress-label span:first-child { color: #f0eafa; font-size: 0.88rem; }
+    .progress-label span:last-child { color: #a78bfa; font-size: 0.88rem; font-weight: 600; }
+    .progress-bar-bg { background-color: #1e1a2e; border-radius: 4px; height: 6px; }
+    .progress-bar-fill { background-color: #a78bfa; border-radius: 4px; height: 6px; }
 
     /* Footer */
-    footer { background-color: #161b22; border-top: 1px solid #30363d; padding: 48px 0; }
-    footer p { color: #484f58; font-size: 0.88rem; margin: 0; }
-    footer a { color: #58a6ff; text-decoration: none; }
+    footer { background-color: #16131f; border-top: 1px solid #2d2040; padding: 48px 0; }
+    footer p { color: #3d3456; font-size: 0.88rem; margin: 0; }
+    footer a { color: #a78bfa; text-decoration: none; }
     footer a:hover { text-decoration: underline; }
 
-    .alt-bg { background-color: #161b22; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; }
+    .alt-bg { background-color: #16131f; border-top: 1px solid #2d2040; border-bottom: 1px solid #2d2040; }
   </style>
 </head>
 <body>
@@ -118,9 +119,9 @@
   <div class="container">
     <a class="navbar-brand" href="#">Milan Sajiv</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
-      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
-      <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
+      <span style="display:block;width:20px;height:2px;background:#f0eafa;margin:4px 0;"></span>
+      <span style="display:block;width:20px;height:2px;background:#f0eafa;margin:4px 0;"></span>
+      <span style="display:block;width:20px;height:2px;background:#f0eafa;margin:4px 0;"></span>
     </button>
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto">
@@ -220,9 +221,9 @@
       <div class="col-lg-6">
         <div class="section-label">About</div>
         <div class="section-title">Who I am</div>
-        <p style="color:#8b949e; line-height:1.8; margin-bottom:20px;">I'm a 25-year-old Trainee BI Analyst at Screwfix Spares, simultaneously completing a Level 6 BSc Data Science Degree Apprenticeship with BPP. I have a background in A-level Mathematics, Further Mathematics, and Physics — which grounds how I think about data and machine learning problems.</p>
-        <p style="color:#8b949e; line-height:1.8; margin-bottom:20px;">My long-term goal is to become a world-class AI expert — working at the frontier of AI development, financially free enough to choose my work, and doing so on my own terms. My north star is Demis Hassabis: co-founder of DeepMind, Nobel laureate, and proof that rigorous foundations and genuine curiosity compound over time.</p>
-        <p style="color:#8b949e; line-height:1.8;">I'm not there yet. But I'm building every week — through the degree, through self-directed study, through projects, and through the personal AI system I built to keep me accountable across all of it.</p>
+        <p style="color:#8b7eaa; line-height:1.8; margin-bottom:20px;">I'm a 25-year-old Trainee BI Analyst at Screwfix Spares, simultaneously completing a Level 6 BSc Data Science Degree Apprenticeship with BPP. I have a background in A-level Mathematics, Further Mathematics, and Physics — which grounds how I think about data and machine learning problems.</p>
+        <p style="color:#8b7eaa; line-height:1.8; margin-bottom:20px;">My long-term goal is to become a world-class AI expert — working at the frontier of AI development, financially free enough to choose my work, and doing so on my own terms. My north star is Demis Hassabis: co-founder of DeepMind, Nobel laureate, and proof that rigorous foundations and genuine curiosity compound over time.</p>
+        <p style="color:#8b7eaa; line-height:1.8;">I'm not there yet. But I'm building every week — through the degree, through self-directed study, through projects, and through the personal AI system I built to keep me accountable across all of it.</p>
       </div>
       <div class="col-lg-6">
         <div class="row g-3">
@@ -365,7 +366,7 @@
             <span class="agent-tag">DAX</span>
             <span class="agent-tag">ETL</span>
           </div>
-          <span style="color:#484f58; font-size:0.85rem;">Proprietary — not publicly hosted</span>
+          <span style="color:#3d3456; font-size:0.85rem;">Proprietary — not publicly hosted</span>
         </div>
       </div>
       <div class="col-lg-4">
@@ -416,8 +417,8 @@
       <div class="col-lg-5">
         <div class="section-label">The Journey</div>
         <div class="section-title">Where I'm going</div>
-        <p style="color:#8b949e; line-height:1.8;">The gap between where I am and where I want to be is large. That's the point. Every session, every project, every gym morning at 5am is compounding toward something specific.</p>
-        <p style="color:#8b949e; line-height:1.8; margin-top:16px;">The plan is mapped. The check-ins are in place. The only variable is execution.</p>
+        <p style="color:#8b7eaa; line-height:1.8;">The gap between where I am and where I want to be is large. That's the point. Every session, every project, every gym morning at 5am is compounding toward something specific.</p>
+        <p style="color:#8b7eaa; line-height:1.8; margin-top:16px;">The plan is mapped. The check-ins are in place. The only variable is execution.</p>
       </div>
       <div class="col-lg-7">
         <div class="timeline mt-4">
@@ -462,12 +463,12 @@
     <div class="imperial-banner">
       <div class="row g-5">
         <div class="col-lg-5">
-          <h3 style="color:#e6edf3; font-size:1.3rem; margin-bottom:16px;">Target program</h3>
-          <p style="color:#8b949e; margin-bottom:8px;">Computing (AI & Machine Learning) MSc</p>
-          <p style="color:#58a6ff; font-weight:600; margin-bottom:24px;">Imperial College London — September 2028</p>
-          <p style="color:#8b949e; font-size:0.9rem; line-height:1.7;">Entry requirement: <strong style="color:#e6edf3;">First Class Honours</strong>. Substantial computing component. Strong mathematics. Programming ability. Independent project work.</p>
+          <h3 style="color:#f0eafa; font-size:1.3rem; margin-bottom:16px;">Target program</h3>
+          <p style="color:#8b7eaa; margin-bottom:8px;">Computing (AI & Machine Learning) MSc</p>
+          <p style="color:#a78bfa; font-weight:600; margin-bottom:24px;">Imperial College London — September 2028</p>
+          <p style="color:#8b7eaa; font-size:0.9rem; line-height:1.7;">Entry requirement: <strong style="color:#f0eafa;">First Class Honours</strong>. Substantial computing component. Strong mathematics. Programming ability. Independent project work.</p>
           <div class="mt-4">
-            <p style="color:#8b949e; font-size:0.85rem; margin-bottom:8px;">Backup programs:</p>
+            <p style="color:#8b7eaa; font-size:0.85rem; margin-bottom:8px;">Backup programs:</p>
             <span class="agent-tag">UCL — ML MSc</span>
             <span class="agent-tag">Edinburgh — AI MSc</span>
             <span class="agent-tag">KCL — AI MSc</span>
@@ -519,7 +520,7 @@
     <p class="mb-2">Milan Sajiv</p>
     <p class="mb-3">
       <a href="https://github.com/MilanSajiv">GitHub</a>
-      <span style="color:#30363d; margin: 0 12px;">·</span>
+      <span style="color:#2d2040; margin: 0 12px;">·</span>
       <a href="https://bp0323912.github.io/data-science-portfolio">Data Science Portfolio</a>
     </p>
     <p>BSc (Hons) Data Science — BPP University · Building toward Imperial College London · 2028</p>
@@ -527,5 +528,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="animations.js"></script>
 </body>
 </html>
