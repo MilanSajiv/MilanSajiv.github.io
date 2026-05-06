@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Workout Programme — Milan Sajiv</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #e6edf3; }
+    .navbar { background-color: #161b22; border-bottom: 1px solid #30363d; }
+    .navbar-brand { color: #e6edf3 !important; font-weight: 700; }
+    .nav-link { color: #8b949e !important; font-size: 0.9rem; }
+    .nav-link:hover { color: #58a6ff !important; }
+    .hero { background: linear-gradient(135deg, #161b22 0%, #0d1117 100%); padding: 80px 0 60px; border-bottom: 1px solid #30363d; }
+    .hero .eyebrow { color: #58a6ff; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+    .hero h1 { font-size: 2.6rem; font-weight: 700; }
+    .hero p { color: #8b949e; font-size: 1rem; max-width: 560px; margin-top: 12px; }
+    section { padding: 60px 0; }
+    .section-label { color: #58a6ff; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+    .section-title { font-size: 1.7rem; font-weight: 700; margin-bottom: 32px; }
+    .day-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 32px; margin-bottom: 24px; }
+    .day-card .day-badge { display: inline-block; background-color: #21262d; color: #58a6ff; border: 1px solid #30363d; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 16px; }
+    .day-card h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; }
+    .day-card .subtitle { color: #8b949e; font-size: 0.9rem; margin-bottom: 24px; }
+    .exercise-table { width: 100%; }
+    .exercise-table th { color: #8b949e; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 8px 12px; border-bottom: 1px solid #30363d; }
+    .exercise-table td { padding: 12px; border-bottom: 1px solid #21262d; font-size: 0.9rem; vertical-align: top; }
+    .exercise-table td:first-child { color: #e6edf3; font-weight: 500; }
+    .exercise-table td:nth-child(2) { color: #58a6ff; font-weight: 600; white-space: nowrap; }
+    .exercise-table td:last-child { color: #8b949e; font-size: 0.85rem; }
+    .exercise-table tr:last-child td { border-bottom: none; }
+    .priority-tag { background-color: #1a3a2a; color: #3fb950; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 600; margin-left: 6px; }
+    .core-section { background-color: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-top: 20px; }
+    .core-section h4 { color: #8b949e; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .core-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #21262d; font-size: 0.88rem; }
+    .core-item:last-child { border-bottom: none; }
+    .core-item span:first-child { color: #e6edf3; }
+    .core-item span:last-child { color: #58a6ff; }
+    .rule-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 24px; height: 100%; }
+    .rule-card h4 { color: #e6edf3; font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
+    .rule-card p, .rule-card li { color: #8b949e; font-size: 0.88rem; line-height: 1.6; }
+    .rule-card.warning { border-color: #d29922; }
+    .rule-card.warning h4 { color: #d29922; }
+    .weights-table { background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; overflow: hidden; }
+    .weights-table table { width: 100%; margin: 0; }
+    .weights-table th { background-color: #21262d; color: #8b949e; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 12px 16px; }
+    .weights-table td { padding: 12px 16px; border-bottom: 1px solid #21262d; font-size: 0.88rem; color: #8b949e; }
+    .weights-table td:first-child { color: #e6edf3; }
+    .weights-table td:nth-child(2) { color: #3fb950; }
+    .weights-table td:nth-child(3) { color: #d29922; }
+    .weights-table td:last-child { color: #58a6ff; }
+    .weights-table tr:last-child td { border-bottom: none; }
+    footer { background-color: #161b22; border-top: 1px solid #30363d; padding: 32px 0; text-align: center; }
+    footer p { color: #484f58; font-size: 0.85rem; margin: 0; }
+    footer a { color: #58a6ff; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Milan Sajiv</a>
+    <div class="navbar-nav ms-auto d-none d-md-flex">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link active" href="workout.html" style="color:#58a6ff !important;">Workout</a>
+      <a class="nav-link" href="nutrition.html">Nutrition</a>
+      <a class="nav-link" href="schedule.html">Schedule</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <div class="eyebrow">Fitness & Health</div>
+    <h1>Workout Programme</h1>
+    <p>3-day split — Mon (A), Thu (B), Fri (C) at 5am. The Foundry Gym, Warwick. Knee sleeve every session. Rehab focus: quads, glutes, core.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+
+    <!-- Day A -->
+    <div class="day-card">
+      <span class="day-badge">Monday · 5am</span>
+      <h2>Day A — Lower Body + Rehab</h2>
+      <p class="subtitle">Warm-up: 5 min treadmill walk + leg swings + hip circles</p>
+      <table class="exercise-table">
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Sets × Reps</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hack squat machine</td>
+            <td>3 × 12</td>
+            <td>Moderate depth, controlled descent</td>
+          </tr>
+          <tr>
+            <td>Romanian deadlift</td>
+            <td>3 × 10</td>
+            <td>Hip hinge, soft knee bend</td>
+          </tr>
+          <tr>
+            <td>Hip thrust (barbell or dumbbell) <span class="priority-tag">Priority</span></td>
+            <td>3 × 12</td>
+            <td>Squeeze glutes at top</td>
+          </tr>
+          <tr>
+            <td>Single leg squat machine</td>
+            <td>2 × 10 each</td>
+            <td>Controlled — addresses left/right imbalances</td>
+          </tr>
+          <tr>
+            <td>Terminal knee extension (cable) <span class="priority-tag">Rehab</span></td>
+            <td>3 × 15</td>
+            <td>Face cable, loop behind knee, press to straight</td>
+          </tr>
+          <tr>
+            <td>Standing calf raise</td>
+            <td>4 × 15–20</td>
+            <td>Full range — heel all the way down, pause at top, slow tempo</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="core-section">
+        <h4>Core Finisher (5 min)</h4>
+        <div class="core-item"><span>Dead bug</span><span>3 × 8 each side</span></div>
+        <div class="core-item"><span>Plank</span><span>2 × 30–45 sec</span></div>
+        <div class="core-item"><span>Pallof press (cable)</span><span>2 × 10 each side</span></div>
+      </div>
+    </div>
+
+    <!-- Day B -->
+    <div class="day-card">
+      <span class="day-badge">Thursday · 5am</span>
+      <h2>Day B — Upper Push + Glute Accessory</h2>
+      <p class="subtitle">Warm-up: 5 min arm circles + 2 × 15 light cable rows</p>
+      <table class="exercise-table">
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Sets × Reps</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dumbbell shoulder press</td>
+            <td>3 × 10</td>
+            <td>Seated or standing</td>
+          </tr>
+          <tr>
+            <td>Incline dumbbell press</td>
+            <td>3 × 10</td>
+            <td>30–45 degree bench</td>
+          </tr>
+          <tr>
+            <td>Lateral raises</td>
+            <td>3 × 12</td>
+            <td>Light, controlled — form over weight</td>
+          </tr>
+          <tr>
+            <td>Tricep pushdown (cable)</td>
+            <td>3 × 12</td>
+            <td>Rope or bar attachment</td>
+          </tr>
+          <tr>
+            <td>Cable kickback or hip abduction machine</td>
+            <td>3 × 15</td>
+            <td>Glute accessory — do not skip</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="core-section">
+        <h4>Core Finisher (5 min)</h4>
+        <div class="core-item"><span>Dead bug</span><span>3 × 8 each side</span></div>
+        <div class="core-item"><span>Plank</span><span>2 × 30–45 sec</span></div>
+        <div class="core-item"><span>Pallof press (cable)</span><span>2 × 10 each side</span></div>
+      </div>
+    </div>
+
+    <!-- Day C -->
+    <div class="day-card">
+      <span class="day-badge">Friday · 5am</span>
+      <h2>Day C — Upper Pull + Glute Accessory</h2>
+      <p class="subtitle">Warm-up: 5 min shoulder rolls + light face pull warm-up set</p>
+      <table class="exercise-table">
+        <thead>
+          <tr>
+            <th>Exercise</th>
+            <th>Sets × Reps</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lat pulldown</td>
+            <td>3 × 10</td>
+            <td>Full stretch at top</td>
+          </tr>
+          <tr>
+            <td>Seated cable row</td>
+            <td>3 × 10</td>
+            <td>Chest up, pull to lower chest</td>
+          </tr>
+          <tr>
+            <td>Single-arm dumbbell row</td>
+            <td>3 × 10 each</td>
+            <td>Brace on bench</td>
+          </tr>
+          <tr>
+            <td>Bicep curl</td>
+            <td>3 × 12</td>
+            <td>Controlled on the way down</td>
+          </tr>
+          <tr>
+            <td>Face pull (cable, rope) <span class="priority-tag">Priority</span></td>
+            <td>3 × 15</td>
+            <td>Shoulder health — do not skip</td>
+          </tr>
+          <tr>
+            <td>Single-leg glute bridge (floor)</td>
+            <td>3 × 12 each</td>
+            <td>Glute accessory</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="core-section">
+        <h4>Core Finisher (5 min)</h4>
+        <div class="core-item"><span>Dead bug</span><span>3 × 8 each side</span></div>
+        <div class="core-item"><span>Plank</span><span>2 × 30–45 sec</span></div>
+        <div class="core-item"><span>Pallof press (cable)</span><span>2 × 10 each side</span></div>
+      </div>
+    </div>
+
+    <!-- Rules -->
+    <div class="row g-4 mt-2">
+      <div class="col-lg-4">
+        <div class="rule-card">
+          <h4>Progression Rule</h4>
+          <p>When all reps are comfortable for 2 sessions in a row, add the smallest weight increment available. Do not increase because one session felt easy — confirm it twice.</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="rule-card warning">
+          <h4>Knee Monitoring</h4>
+          <ul class="ps-3 mb-0">
+            <li>Reduce hack squat depth first</li>
+            <li>Reduce single leg squat range</li>
+            <li>Drop to bodyweight hip thrust</li>
+            <li>Never skip terminal knee extensions — these help most when the knee is aggravated</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="rule-card">
+          <h4>Low Energy Fallback</h4>
+          <p>Skip a main exercise rather than doing it badly. Never skip the core finisher — it takes 5 minutes and is the easiest part to keep. One missed session never matters. Missing three weeks matters.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Target weights -->
+    <div class="mt-5">
+      <div class="section-label">Strength Targets</div>
+      <div class="section-title" style="font-size:1.4rem; margin-bottom:20px;">Weight progression</div>
+      <div class="weights-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Exercise</th>
+              <th>Now</th>
+              <th>3 months</th>
+              <th>Summer 2027</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Hack squat (added weight)</td><td>20–40kg</td><td>50–70kg</td><td>90–130kg</td></tr>
+            <tr><td>Romanian deadlift</td><td>30–40kg</td><td>55–70kg</td><td>80–110kg</td></tr>
+            <tr><td>Hip thrust</td><td>20–40kg</td><td>60–80kg</td><td>100–140kg</td></tr>
+            <tr><td>Calf raise</td><td>20–30kg</td><td>50–70kg</td><td>80–120kg</td></tr>
+            <tr><td>DB shoulder press (each)</td><td>8–12kg</td><td>14–18kg</td><td>20–28kg</td></tr>
+            <tr><td>Incline DB press (each)</td><td>10–14kg</td><td>16–22kg</td><td>24–32kg</td></tr>
+            <tr><td>Lateral raises (each)</td><td>4–6kg</td><td>7–10kg</td><td>10–14kg</td></tr>
+            <tr><td>Lat pulldown</td><td>30–40kg</td><td>50–65kg</td><td>70–90kg</td></tr>
+            <tr><td>Seated cable row</td><td>30–40kg</td><td>50–65kg</td><td>65–85kg</td></tr>
+            <tr><td>Bicep curl (each)</td><td>8–12kg</td><td>13–17kg</td><td>18–24kg</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p><a href="index.html">← Back to Milan Sajiv</a></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
