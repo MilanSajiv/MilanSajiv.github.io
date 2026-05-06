@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Milan Sajiv — Data Scientist & AI Enthusiast</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: #0d1117; color: #e6edf3; margin: 0; }
+
+    /* Nav */
+    .navbar { background-color: #161b22; border-bottom: 1px solid #30363d; }
+    .navbar-brand { color: #e6edf3 !important; font-weight: 700; font-size: 1.1rem; }
+    .nav-link { color: #8b949e !important; font-size: 0.9rem; }
+    .nav-link:hover { color: #58a6ff !important; }
+
+    /* Hero */
+    .hero { background: linear-gradient(135deg, #161b22 0%, #0d1117 100%); padding: 110px 0 90px; border-bottom: 1px solid #30363d; }
+    .hero .eyebrow { color: #58a6ff; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+    .hero h1 { font-size: 3.2rem; font-weight: 700; line-height: 1.2; margin-bottom: 20px; }
+    .hero h1 span { color: #58a6ff; }
+    .hero p { font-size: 1.1rem; color: #8b949e; max-width: 580px; line-height: 1.7; }
+    .badge-tech { background-color: #21262d; color: #8b949e; border: 1px solid #30363d; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin: 3px; }
+    .btn-main { background-color: #238636; border: none; color: #fff; padding: 11px 26px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-block; margin-right: 12px; font-size: 0.95rem; }
+    .btn-main:hover { background-color: #2ea043; color: #fff; }
+    .btn-ghost { background-color: transparent; border: 1px solid #30363d; color: #e6edf3; padding: 11px 26px; border-radius: 6px; font-weight: 600; text-decoration: none; display: inline-block; font-size: 0.95rem; }
+    .btn-ghost:hover { background-color: #21262d; color: #e6edf3; border-color: #58a6ff; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .section-label { color: #58a6ff; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    .section-sub { color: #8b949e; font-size: 1rem; margin-bottom: 48px; }
+
+    /* Cards */
+    .card-dark { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 28px; height: 100%; transition: border-color 0.2s; }
+    .card-dark:hover { border-color: #58a6ff; }
+    .card-dark .card-label { color: #58a6ff; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    .card-dark h3 { color: #e6edf3; font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
+    .card-dark p { color: #8b949e; font-size: 0.92rem; line-height: 1.6; margin: 0; }
+
+    /* Stat strip */
+    .stat-strip { background-color: #161b22; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; padding: 40px 0; }
+    .stat-box { text-align: center; }
+    .stat-box .number { font-size: 2.2rem; font-weight: 700; color: #58a6ff; }
+    .stat-box .label { color: #8b949e; font-size: 0.85rem; margin-top: 4px; }
+
+    /* Agent cards */
+    .agent-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 32px; height: 100%; }
+    .agent-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 16px; }
+    .agent-icon.blue { background-color: #1c3a5e; }
+    .agent-icon.green { background-color: #1a3a2a; }
+    .agent-icon.purple { background-color: #2d1a4a; }
+    .agent-card h3 { color: #e6edf3; font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    .agent-card p { color: #8b949e; font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px; }
+    .agent-tag { background-color: #0d1117; border: 1px solid #30363d; color: #8b949e; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; margin-right: 4px; margin-bottom: 4px; display: inline-block; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #58a6ff, #30363d); }
+    .timeline-item { position: relative; margin-bottom: 36px; }
+    .timeline-item::before { content: ''; position: absolute; left: -28px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background-color: #58a6ff; border: 2px solid #0d1117; }
+    .timeline-item.future::before { background-color: #30363d; }
+    .timeline-item .year { color: #58a6ff; font-size: 0.8rem; font-weight: 600; margin-bottom: 4px; }
+    .timeline-item.future .year { color: #484f58; }
+    .timeline-item h4 { color: #e6edf3; font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+    .timeline-item.future h4 { color: #8b949e; }
+    .timeline-item p { color: #8b949e; font-size: 0.88rem; margin: 0; }
+
+    /* Project cards */
+    .project-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 28px; height: 100%; transition: border-color 0.2s, transform 0.2s; }
+    .project-card:hover { border-color: #58a6ff; transform: translateY(-2px); }
+    .project-status { font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 14px; }
+    .status-live { background-color: #1a3a2a; color: #3fb950; }
+    .status-progress { background-color: #2d2a1a; color: #d29922; }
+    .status-planned { background-color: #21262d; color: #8b949e; }
+    .project-card h3 { color: #e6edf3; font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+    .project-card p { color: #8b949e; font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px; }
+    .project-link { color: #58a6ff; font-size: 0.85rem; text-decoration: none; }
+    .project-link:hover { text-decoration: underline; color: #58a6ff; }
+
+    /* Memory system */
+    .memory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .memory-item { background-color: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 14px; }
+    .memory-item .mem-icon { font-size: 1.2rem; margin-bottom: 8px; }
+    .memory-item .mem-name { color: #e6edf3; font-size: 0.8rem; font-weight: 600; font-family: monospace; }
+    .memory-item .mem-desc { color: #484f58; font-size: 0.72rem; margin-top: 3px; }
+
+    /* Imperial section */
+    .imperial-banner { background: linear-gradient(135deg, #1c2a3a 0%, #161b22 100%); border: 1px solid #30363d; border-radius: 12px; padding: 40px; }
+    .progress-item { margin-bottom: 16px; }
+    .progress-label { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .progress-label span:first-child { color: #e6edf3; font-size: 0.88rem; }
+    .progress-label span:last-child { color: #58a6ff; font-size: 0.88rem; font-weight: 600; }
+    .progress-bar-bg { background-color: #21262d; border-radius: 4px; height: 6px; }
+    .progress-bar-fill { background-color: #58a6ff; border-radius: 4px; height: 6px; }
+
+    /* Footer */
+    footer { background-color: #161b22; border-top: 1px solid #30363d; padding: 48px 0; }
+    footer p { color: #484f58; font-size: 0.88rem; margin: 0; }
+    footer a { color: #58a6ff; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    .alt-bg { background-color: #161b22; border-top: 1px solid #30363d; border-bottom: 1px solid #30363d; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Milan Sajiv</a>
+    <div class="navbar-nav ms-auto d-none d-md-flex">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#system">AI System</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#journey">Journey</a>
+      <a class="nav-link" href="#imperial">Imperial</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="container">
+    <div class="eyebrow">Data Scientist · AI Enthusiast · Degree Apprentice</div>
+    <h1>Building toward the<br/><span>frontier of AI</span></h1>
+    <p class="mt-3">Trainee BI Analyst by day. Data Science apprentice by degree. Spending every available hour closing the gap between where I am and where I want to be — at the forefront of AI development.</p>
+    <div class="mt-4">
+      <span class="badge-tech">Python</span>
+      <span class="badge-tech">Machine Learning</span>
+      <span class="badge-tech">SQL</span>
+      <span class="badge-tech">Power BI</span>
+      <span class="badge-tech">Claude AI</span>
+      <span class="badge-tech">Data Engineering</span>
+    </div>
+    <div class="mt-4">
+      <a href="https://github.com/MilanSajiv" class="btn-main">GitHub</a>
+      <a href="#projects" class="btn-ghost">See Projects</a>
+    </div>
+  </div>
+</div>
+
+<!-- Stats -->
+<div class="stat-strip">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <div class="stat-box">
+          <div class="number">3</div>
+          <div class="label">Years into a BSc Data Science</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-box">
+          <div class="number">2028</div>
+          <div class="label">Target: Imperial MSc AI/ML</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-box">
+          <div class="number">3</div>
+          <div class="label">AI Agents built & running</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-box">
+          <div class="number">∞</div>
+          <div class="label">Gap to close to Demis Hassabis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <div class="section-label">About</div>
+        <div class="section-title">Who I am</div>
+        <p style="color:#8b949e; line-height:1.8; margin-bottom:20px;">I'm a 25-year-old Trainee BI Analyst at Screwfix Spares, simultaneously completing a Level 6 BSc Data Science Degree Apprenticeship with BPP. I have a background in A-level Mathematics, Further Mathematics, and Physics — which grounds how I think about data and machine learning problems.</p>
+        <p style="color:#8b949e; line-height:1.8; margin-bottom:20px;">My long-term goal is to become a world-class AI expert — working at the frontier of AI development, financially free enough to choose my work, and doing so on my own terms. My north star is Demis Hassabis: co-founder of DeepMind, Nobel laureate, and proof that rigorous foundations and genuine curiosity compound over time.</p>
+        <p style="color:#8b949e; line-height:1.8;">I'm not there yet. But I'm building every week — through the degree, through self-directed study, through projects, and through the personal AI system I built to keep me accountable across all of it.</p>
+      </div>
+      <div class="col-lg-6">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="card-dark">
+              <div class="card-label">Current role</div>
+              <h3>Trainee BI Analyst</h3>
+              <p>Screwfix Spares — building dashboards, ETL pipelines, and data tools that drive operational decisions.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card-dark">
+              <div class="card-label">Studying</div>
+              <h3>BSc Data Science</h3>
+              <p>BPP University — Level 6 Degree Apprenticeship. Year 1 complete. Target: first class honours.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card-dark">
+              <div class="card-label">Target</div>
+              <h3>Imperial MSc</h3>
+              <p>Computing (AI & ML) MSc at Imperial College London. Application target: September 2028.</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card-dark">
+              <div class="card-label">Motivation</div>
+              <h3>Mastery first</h3>
+              <p>Driven by genuine intellectual challenge and the goal of contributing to frontier AI — not recognition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI System -->
+<section id="system" class="alt-bg">
+  <div class="container">
+    <div class="section-label">Personal AI System</div>
+    <div class="section-title">Three agents. One system.</div>
+    <p class="section-sub">Built on Claude Code — a memory-powered personal AI system that keeps me accountable across study, life planning, and health. Each agent reads from a shared memory store and is triggered by natural language.</p>
+
+    <div class="row g-4 mb-5">
+      <div class="col-lg-4">
+        <div class="agent-card">
+          <div class="agent-icon blue">📚</div>
+          <h3>Tutor Agent</h3>
+          <p>Teaches data science, machine learning, Python, SQL, and AI from first principles. Anchors new concepts to mathematics and physics analogies. Tracks weak areas and builds from foundations up.</p>
+          <div class="mt-3">
+            <span class="agent-tag">Python</span>
+            <span class="agent-tag">ML</span>
+            <span class="agent-tag">SQL</span>
+            <span class="agent-tag">AIMA</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="agent-card">
+          <div class="agent-icon green">📅</div>
+          <h3>Life Planner Agent</h3>
+          <p>Manages weekly schedules, daily check-ins, goal tracking, and decision support. Knows my work pattern, commute, girlfriend schedule, and energy levels — plans realistically around all of them.</p>
+          <div class="mt-3">
+            <span class="agent-tag">Weekly planning</span>
+            <span class="agent-tag">Goals</span>
+            <span class="agent-tag">Check-ins</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="agent-card">
+          <div class="agent-icon purple">💪</div>
+          <h3>Fitness & Health Agent</h3>
+          <p>Manages my gym programme, meal plan, step targets, sleep habits, and body measurements. Built around a knee tendon issue, a 5am gym preference, and a recomposition goal for Summer 2027.</p>
+          <div class="mt-3">
+            <span class="agent-tag">3x gym/week</span>
+            <span class="agent-tag">Diet</span>
+            <span class="agent-tag">Recovery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Memory system -->
+    <div class="card-dark">
+      <div class="row align-items-center">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <div class="card-label">Memory System</div>
+          <h3 style="font-size:1.3rem;">Persistent, file-based memory</h3>
+          <p>Every agent reads from a shared memory store before responding. No repeated context needed — the system knows me across every session.</p>
+        </div>
+        <div class="col-lg-8">
+          <div class="memory-grid">
+            <div class="memory-item"><div class="mem-icon">👤</div><div class="mem-name">profile.md</div><div class="mem-desc">Who I am, constraints, schedule</div></div>
+            <div class="memory-item"><div class="mem-icon">🎯</div><div class="mem-name">goals.md</div><div class="mem-desc">Academic & career timeline</div></div>
+            <div class="memory-item"><div class="mem-icon">📖</div><div class="mem-name">learning-profile.md</div><div class="mem-desc">Study style, weak areas</div></div>
+            <div class="memory-item"><div class="mem-icon">📋</div><div class="mem-name">weekly-plan.md</div><div class="mem-desc">Generic week structure</div></div>
+            <div class="memory-item"><div class="mem-icon">🏋️</div><div class="mem-name">fitness-health-profile.md</div><div class="mem-desc">Gym, diet, measurements</div></div>
+            <div class="memory-item"><div class="mem-icon">🏛️</div><div class="mem-name">imperial-prep.md</div><div class="mem-desc">12-category application tracker</div></div>
+            <div class="memory-item"><div class="mem-icon">🧠</div><div class="mem-name">personality-profile.md</div><div class="mem-desc">Motivation & learning style</div></div>
+            <div class="memory-item"><div class="mem-icon">✅</div><div class="mem-name">check-ins.md</div><div class="mem-desc">Daily → quarterly accountability</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Projects</div>
+    <div class="section-title">What I've built</div>
+    <p class="section-sub">A growing portfolio of data science and AI projects — each one chosen to build genuine capability, not just tick a box.</p>
+
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="project-card">
+          <span class="project-status status-live">Live</span>
+          <h3>F1 Podium Prediction</h3>
+          <p>Machine learning pipeline predicting Formula 1 podium finishes using qualifying position and constructor standings. ETL from Jolpica API, Logistic Regression and Random Forest classifiers, 6,432 race results across 15 seasons.</p>
+          <div class="mb-3">
+            <span class="agent-tag">Python</span>
+            <span class="agent-tag">Scikit-learn</span>
+            <span class="agent-tag">Pandas</span>
+            <span class="agent-tag">REST API</span>
+          </div>
+          <a href="https://bp0323912.github.io/data-science-portfolio" class="project-link">View project →</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="project-card">
+          <span class="project-status status-live">Live</span>
+          <h3>Power BI Fault Dashboard</h3>
+          <p>Interactive self-service BI report built for Screwfix Spares, replacing a manual fault data process. Star schema data model, DAX measures, drill-through functionality. Reduced weekly reporting time by 4–5 hours.</p>
+          <div class="mb-3">
+            <span class="agent-tag">Power BI</span>
+            <span class="agent-tag">SQL Server</span>
+            <span class="agent-tag">DAX</span>
+            <span class="agent-tag">ETL</span>
+          </div>
+          <span style="color:#484f58; font-size:0.85rem;">Proprietary — not publicly hosted</span>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="project-card">
+          <span class="project-status status-progress">In progress</span>
+          <h3>Personal AI System</h3>
+          <p>Three-agent Claude Code system with persistent memory, daily/weekly/monthly check-ins, and full life, study, and fitness planning. Built to keep me accountable toward an Imperial MSc and AI Scientist career.</p>
+          <div class="mb-3">
+            <span class="agent-tag">Claude Code</span>
+            <span class="agent-tag">Agent SDK</span>
+            <span class="agent-tag">Memory systems</span>
+          </div>
+          <a href="https://github.com/MilanSajiv" class="project-link">View GitHub →</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="project-card">
+          <span class="project-status status-planned">Planned — 2027</span>
+          <h3>NLP / Computer Vision Project</h3>
+          <p>A self-chosen project in NLP or Computer Vision — to be designed and built in Year 3 of the degree. Will map directly to Imperial MSc optional modules.</p>
+          <div class="mb-3">
+            <span class="agent-tag">Deep Learning</span>
+            <span class="agent-tag">PyTorch</span>
+            <span class="agent-tag">NLP or CV</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="project-card">
+          <span class="project-status status-progress">Early stage</span>
+          <h3>AI Compliance Tool</h3>
+          <p>Supporting my partner in building an AI-powered compliance tool for financial planning firms. Early planning stage — combining my data science background with real regulatory domain knowledge.</p>
+          <div class="mb-3">
+            <span class="agent-tag">AI</span>
+            <span class="agent-tag">FinTech</span>
+            <span class="agent-tag">Compliance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Journey / Timeline -->
+<section id="journey" class="alt-bg">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <div class="section-label">The Journey</div>
+        <div class="section-title">Where I'm going</div>
+        <p style="color:#8b949e; line-height:1.8;">The gap between where I am and where I want to be is large. That's the point. Every session, every project, every gym morning at 5am is compounding toward something specific.</p>
+        <p style="color:#8b949e; line-height:1.8; margin-top:16px;">The plan is mapped. The check-ins are in place. The only variable is execution.</p>
+      </div>
+      <div class="col-lg-7">
+        <div class="timeline mt-4">
+          <div class="timeline-item">
+            <div class="year">2025–2026</div>
+            <h4>Year 1 — Foundations</h4>
+            <p>Data Infrastructure, Engineering, Visualisation, Analytics, Professional Practice. First class target. F1 ML project. Power BI dashboard. Python, Pandas, Scikit-learn.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="year">2026–2027</div>
+            <h4>Year 2 — Building depth</h4>
+            <p>Software Engineering, Project Management, Machine Learning, Unstructured Data. AIMA reading begins. Maths for ML (linear algebra, probability). Kaggle competitions. Second major project.</p>
+          </div>
+          <div class="timeline-item future">
+            <div class="year">2027–2028</div>
+            <h4>Year 3 — Frontier</h4>
+            <p>Big Data, AI and Deep Learning, EPA. AIMA cover to cover. PyTorch depth. NLP or CV project. Imperial personal statement drafted. Applications submitted October 2027.</p>
+          </div>
+          <div class="timeline-item future">
+            <div class="year">2028</div>
+            <h4>Imperial College London</h4>
+            <p>Computing (AI & ML) MSc. South Kensington. The step that changes everything.</p>
+          </div>
+          <div class="timeline-item future">
+            <div class="year">2029+</div>
+            <h4>AI Scientist</h4>
+            <p>Frontier AI work. Financially free. Working on what matters. On my own terms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Imperial Prep -->
+<section id="imperial">
+  <div class="container">
+    <div class="section-label">Imperial Preparation</div>
+    <div class="section-title">The application tracker</div>
+    <p class="section-sub">12 categories. Every one within my control. Checked at every quarterly review.</p>
+
+    <div class="imperial-banner">
+      <div class="row g-5">
+        <div class="col-lg-5">
+          <h3 style="color:#e6edf3; font-size:1.3rem; margin-bottom:16px;">Target program</h3>
+          <p style="color:#8b949e; margin-bottom:8px;">Computing (AI & Machine Learning) MSc</p>
+          <p style="color:#58a6ff; font-weight:600; margin-bottom:24px;">Imperial College London — September 2028</p>
+          <p style="color:#8b949e; font-size:0.9rem; line-height:1.7;">Entry requirement: <strong style="color:#e6edf3;">First Class Honours</strong>. Substantial computing component. Strong mathematics. Programming ability. Independent project work.</p>
+          <div class="mt-4">
+            <p style="color:#8b949e; font-size:0.85rem; margin-bottom:8px;">Backup programs:</p>
+            <span class="agent-tag">UCL — ML MSc</span>
+            <span class="agent-tag">Edinburgh — AI MSc</span>
+            <span class="agent-tag">KCL — AI MSc</span>
+            <span class="agent-tag">Manchester — Advanced CS</span>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="progress-item">
+            <div class="progress-label"><span>Academic grade (target 75%+)</span><span>In progress</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:33%"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label"><span>Mathematics for ML (Deisenroth)</span><span>Starting May 2026</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label"><span>GitHub portfolio (3 projects)</span><span>1 of 3</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:33%"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label"><span>Kaggle competitions</span><span>Oct 2026</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label"><span>Research paper reading (1/week)</span><span>Oct 2026</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label"><span>DeepLearning.AI certifications</span><span>Oct 2026</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label"><span>Personal statement</span><span>Jun 2027</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%"></div></div>
+          </div>
+          <div class="progress-item">
+            <div class="progress-label"><span>Applications submitted</span><span>Oct 2027</span></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container text-center">
+    <p class="mb-2">Milan Sajiv</p>
+    <p class="mb-3">
+      <a href="https://github.com/MilanSajiv">GitHub</a>
+      <span style="color:#30363d; margin: 0 12px;">·</span>
+      <a href="https://bp0323912.github.io/data-science-portfolio">Data Science Portfolio</a>
+    </p>
+    <p>BSc (Hons) Data Science — BPP University · Building toward Imperial College London · 2028</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
