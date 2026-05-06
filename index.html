@@ -15,7 +15,11 @@
     .navbar { background-color: #161b22; border-bottom: 1px solid #30363d; }
     .navbar-brand { color: #e6edf3 !important; font-weight: 700; font-size: 1.1rem; }
     .nav-link { color: #8b949e !important; font-size: 0.9rem; }
-    .nav-link:hover { color: #58a6ff !important; }
+    .nav-link:hover, .nav-link.active { color: #58a6ff !important; }
+    .navbar-toggler { border-color: #30363d !important; padding: 6px 10px; }
+    .dropdown-menu { background-color: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 6px; margin-top: 4px; }
+    .dropdown-item { color: #8b949e; border-radius: 4px; font-size: 0.88rem; padding: 8px 14px; }
+    .dropdown-item:hover, .dropdown-item:focus { background-color: #21262d; color: #58a6ff; }
 
     /* Hero */
     .hero { background: linear-gradient(135deg, #161b22 0%, #0d1117 100%); padding: 110px 0 90px; border-bottom: 1px solid #30363d; }
@@ -113,25 +117,45 @@
 <nav class="navbar navbar-expand-lg sticky-top">
   <div class="container">
     <a class="navbar-brand" href="#">Milan Sajiv</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" style="border-color:#30363d; padding:6px 10px;">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
       <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
       <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
       <span style="display:block;width:20px;height:2px;background:#e6edf3;margin:4px 0;"></span>
     </button>
     <div class="collapse navbar-collapse" id="mainNav">
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#system">AI System</a>
-        <a class="nav-link" href="#projects">Projects</a>
-        <a class="nav-link" href="#journey">Journey</a>
-        <a class="nav-link" href="#imperial">Imperial</a>
-        <a class="nav-link" href="workout.html">Workout</a>
-        <a class="nav-link" href="nutrition.html">Nutrition</a>
-        <a class="nav-link" href="schedule.html">Schedule</a>
-        <a class="nav-link" href="goals.html">Goals</a>
-        <a class="nav-link" href="study.html">Study</a>
-        <a class="nav-link" href="progress.html">Progress</a>
-      </div>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">Home</a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="index.html">Home</a></li>
+            <li><a class="dropdown-item" href="#about">About</a></li>
+            <li><a class="dropdown-item" href="#system">AI System</a></li>
+            <li><a class="dropdown-item" href="#projects">Projects</a></li>
+            <li><a class="dropdown-item" href="#journey">Journey</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Health</a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="workout.html">Workout</a></li>
+            <li><a class="dropdown-item" href="nutrition.html">Nutrition</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Goals</a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="goals.html">Goals & Imperial Prep</a></li>
+            <li><a class="dropdown-item" href="study.html">Study Plan</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Schedule</a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="schedule.html">Weekly Schedule</a></li>
+            <li><a class="dropdown-item" href="progress.html">Progress</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
