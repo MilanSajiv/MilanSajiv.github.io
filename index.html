@@ -113,14 +113,23 @@
     .timeline-item.future h4 { color: #8b7eaa; }
     .timeline-item p { color: #8b7eaa; font-size: 0.88rem; margin: 0; }
 
-    /* Project cards */
-    .project-card { background-color: #16131f; border: 1px solid #2d2040; border-radius: 12px; padding: 28px; height: 100%; transition: border-color 0.2s, transform 0.2s; }
-    .project-card:hover { border-color: #a78bfa; transform: translateY(-2px); }
+    /* Project cards — flip */
     .project-status { font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 14px; }
     .status-live { background-color: #1a3a2a; color: #3fb950; }
     .status-progress { background-color: #2d2a1a; color: #d29922; }
     .status-planned { background-color: #1e1a2e; color: #8b7eaa; }
-    .project-card h3 { color: #f0eafa; font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+    .project-card-wrap { height: 240px; perspective: 1000px; cursor: pointer; }
+    .project-card { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(0.4,0.2,0.2,1); border-radius: 12px; }
+    .project-card.flipped { transform: rotateY(180deg); }
+    .project-card-front, .project-card-back { position: absolute; inset: 0; border-radius: 12px; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; padding: 24px; }
+    .project-card-front { background-color: #16131f; border: 1px solid #2d2040; transition: border-color 0.2s; }
+    .project-card-wrap:hover .project-card-front { border-color: #a78bfa; }
+    .project-card-back { background-color: #1e1a2e; border: 1px solid #a78bfa; transform: rotateY(180deg); justify-content: space-between; }
+    .project-card-front h3 { color: #f0eafa; font-size: 1rem; font-weight: 600; margin: 0 0 12px; flex: 1; }
+    .project-card-back h3 { color: #a78bfa; font-size: 0.8rem; font-weight: 700; margin: 0 0 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .project-card-back p { color: #8b7eaa; font-size: 0.83rem; line-height: 1.55; margin: 0 0 12px; flex: 1; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
+    .project-link { color: #a78bfa; font-size: 0.83rem; text-decoration: none; }
+    .project-link:hover { text-decoration: underline; color: #a78bfa; }
     .project-card p { color: #8b7eaa; font-size: 0.88rem; line-height: 1.6; margin-bottom: 16px; }
     .project-link { color: #a78bfa; font-size: 0.85rem; text-decoration: none; }
     .project-link:hover { text-decoration: underline; color: #a78bfa; }
@@ -414,98 +423,115 @@
 
     <div class="row g-4">
       <div class="col-lg-4">
-        <div class="project-card">
-          <span class="project-status status-live">Live</span>
-          <h3>F1 Podium Prediction</h3>
-          <p>ML pipeline predicting Formula 1 podium finishes using qualifying position and constructor standings. ETL from Jolpica API, Logistic Regression and Random Forest classifiers, 6,432 race results across 15 seasons.</p>
-          <div class="mb-3">
-            <span class="agent-tag">Python</span>
-            <span class="agent-tag">Scikit-learn</span>
-            <span class="agent-tag">Pandas</span>
-            <span class="agent-tag">REST API</span>
-          </div>
-          <a href="https://bp0323912.github.io/data-science-portfolio" class="project-link">View project →</a>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="project-card">
-          <span class="project-status status-planned">Planned: Jan 2027</span>
-          <h3>Premier League Match Prediction</h3>
-          <p>Multi-class classification predicting win, draw, or loss using player stats, form, head-to-head history, and match conditions. More complex feature engineering and richer data sources than the F1 project.</p>
-          <div class="mb-3">
-            <span class="agent-tag">Python</span>
-            <span class="agent-tag">XGBoost</span>
-            <span class="agent-tag">Feature engineering</span>
-            <span class="agent-tag">Multi-class</span>
+        <div class="project-card-wrap">
+          <div class="project-card">
+            <div class="project-card-front">
+              <span class="project-status status-live">Live</span>
+              <h3>F1 Podium Prediction</h3>
+              <div><span class="agent-tag">Python</span><span class="agent-tag">Scikit-learn</span><span class="agent-tag">Pandas</span><span class="agent-tag">REST API</span></div>
+            </div>
+            <div class="project-card-back">
+              <h3>F1 Podium Prediction</h3>
+              <p>ML pipeline predicting Formula 1 podium finishes using qualifying position and constructor standings. ETL from Jolpica API, Logistic Regression and Random Forest classifiers, 6,432 race results across 15 seasons.</p>
+              <a href="https://bp0323912.github.io/data-science-portfolio" class="project-link">View project →</a>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="project-card">
-          <span class="project-status status-planned">Planned: May 2027</span>
-          <h3>RL Game Agent (DQN)</h3>
-          <p>Deep Q-Network reinforcement learning agent trained to play a game environment. Directly engages with the techniques behind DeepMind's AlphaGo and AlphaZero. Maps to Imperial's Reinforcement Learning optional module.</p>
-          <div class="mb-3">
-            <span class="agent-tag">PyTorch</span>
-            <span class="agent-tag">Reinforcement Learning</span>
-            <span class="agent-tag">DQN</span>
-            <span class="agent-tag">OpenAI Gym</span>
+        <div class="project-card-wrap">
+          <div class="project-card">
+            <div class="project-card-front">
+              <span class="project-status status-planned">Planned: Jan 2027</span>
+              <h3>Premier League Match Prediction</h3>
+              <div><span class="agent-tag">Python</span><span class="agent-tag">XGBoost</span><span class="agent-tag">Feature engineering</span><span class="agent-tag">Multi-class</span></div>
+            </div>
+            <div class="project-card-back">
+              <h3>Premier League Match Prediction</h3>
+              <p>Multi-class classification predicting win, draw, or loss using player stats, form, head-to-head history, and match conditions. Richer feature engineering than the F1 project.</p>
+              <span style="color:#3d3456;font-size:0.8rem;">Planned Jan 2027</span>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="project-card">
-          <span class="project-status status-planned">Planned: Jun 2027</span>
-          <h3>Financial Compliance NLP</h3>
-          <p>Transformer-based NLP model for classifying and extracting information from FCA regulatory documents. Feeds directly into Amaea's compliance intelligence layer. Maps to Imperial's NLP optional module.</p>
-          <div class="mb-3">
-            <span class="agent-tag">Transformers</span>
-            <span class="agent-tag">HuggingFace</span>
-            <span class="agent-tag">NLP</span>
-            <span class="agent-tag">FinTech</span>
+        <div class="project-card-wrap">
+          <div class="project-card">
+            <div class="project-card-front">
+              <span class="project-status status-planned">Planned: May 2027</span>
+              <h3>RL Game Agent (DQN)</h3>
+              <div><span class="agent-tag">PyTorch</span><span class="agent-tag">Reinforcement Learning</span><span class="agent-tag">DQN</span><span class="agent-tag">OpenAI Gym</span></div>
+            </div>
+            <div class="project-card-back">
+              <h3>RL Game Agent (DQN)</h3>
+              <p>Deep Q-Network agent trained to play a game environment. Directly engages with the techniques behind DeepMind's AlphaGo and AlphaZero. Maps to Imperial's RL optional module.</p>
+              <span style="color:#3d3456;font-size:0.8rem;">Planned May 2027</span>
+            </div>
           </div>
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="project-card">
-          <span class="project-status status-live">Live</span>
-          <h3>Power BI Fault Dashboard</h3>
-          <p>Self-service BI report built for Screwfix Spares, replacing a manual fault data process. Star schema data model, DAX measures, drill-through functionality. Reduced weekly reporting time by 4–5 hours.</p>
-          <div class="mb-3">
-            <span class="agent-tag">Power BI</span>
-            <span class="agent-tag">SQL Server</span>
-            <span class="agent-tag">DAX</span>
-            <span class="agent-tag">ETL</span>
+        <div class="project-card-wrap">
+          <div class="project-card">
+            <div class="project-card-front">
+              <span class="project-status status-planned">Planned: Jun 2027</span>
+              <h3>Financial Compliance NLP</h3>
+              <div><span class="agent-tag">Transformers</span><span class="agent-tag">HuggingFace</span><span class="agent-tag">NLP</span><span class="agent-tag">FinTech</span></div>
+            </div>
+            <div class="project-card-back">
+              <h3>Financial Compliance NLP</h3>
+              <p>Transformer-based NLP model for classifying and extracting information from FCA regulatory documents. Feeds directly into Amaea's compliance intelligence layer. Maps to Imperial's NLP module.</p>
+              <span style="color:#3d3456;font-size:0.8rem;">Planned Jun 2027</span>
+            </div>
           </div>
-          <span style="color:#3d3456; font-size:0.85rem;">Proprietary, not publicly hosted</span>
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="project-card">
-          <span class="project-status status-progress">In progress</span>
-          <h3>Personal AI System</h3>
-          <p>Three-agent Claude Code system with persistent memory, daily/weekly/monthly check-ins, and full life, study, and fitness planning. Built to keep me accountable toward an Imperial MSc and AI Scientist career.</p>
-          <div class="mb-3">
-            <span class="agent-tag">Claude Code</span>
-            <span class="agent-tag">Agent SDK</span>
-            <span class="agent-tag">Memory systems</span>
+        <div class="project-card-wrap">
+          <div class="project-card">
+            <div class="project-card-front">
+              <span class="project-status status-live">Live</span>
+              <h3>Power BI Fault Dashboard</h3>
+              <div><span class="agent-tag">Power BI</span><span class="agent-tag">SQL Server</span><span class="agent-tag">DAX</span><span class="agent-tag">ETL</span></div>
+            </div>
+            <div class="project-card-back">
+              <h3>Power BI Fault Dashboard</h3>
+              <p>Self-service BI report built for Screwfix Spares, replacing a manual fault data process. Star schema data model, DAX measures, drill-through functionality. Reduced reporting time by 4-5 hours/week.</p>
+              <span style="color:#3d3456;font-size:0.8rem;">Proprietary, not publicly hosted</span>
+            </div>
           </div>
-          <a href="https://github.com/MilanSajiv" class="project-link">View GitHub →</a>
         </div>
       </div>
       <div class="col-lg-4">
-        <div class="project-card">
-          <span class="project-status status-progress">In development</span>
-          <h3>Amaea: AI Compliance Platform</h3>
-          <p>Co-founding and building the technical architecture for Amaea, an AI-powered FCA compliance platform for UK IFA firms. Building the compliance intelligence layer now: RAG on FCA regulatory documents, vector knowledge base, and Claude-powered compliance assistant.</p>
-          <div class="mb-3">
-            <span class="agent-tag">Claude API</span>
-            <span class="agent-tag">Python</span>
-            <span class="agent-tag">pgvector</span>
-            <span class="agent-tag">Supabase</span>
-            <span class="agent-tag">RAG</span>
+        <div class="project-card-wrap">
+          <div class="project-card">
+            <div class="project-card-front">
+              <span class="project-status status-progress">In progress</span>
+              <h3>Personal AI System</h3>
+              <div><span class="agent-tag">Claude Code</span><span class="agent-tag">Agent SDK</span><span class="agent-tag">Memory systems</span></div>
+            </div>
+            <div class="project-card-back">
+              <h3>Personal AI System</h3>
+              <p>Four-agent Claude Code system with persistent memory, daily/weekly/monthly check-ins, and full life, study, fitness, and startup planning. Built to keep me accountable toward an Imperial MSc.</p>
+              <a href="https://github.com/MilanSajiv" class="project-link">View GitHub →</a>
+            </div>
           </div>
-          <a href="https://amaea0002-dev.github.io/webpage" class="project-link">View Amaea →</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="project-card-wrap">
+          <div class="project-card">
+            <div class="project-card-front">
+              <span class="project-status status-progress">In development</span>
+              <h3>Amaea: AI Compliance Platform</h3>
+              <div><span class="agent-tag">Claude API</span><span class="agent-tag">Python</span><span class="agent-tag">pgvector</span><span class="agent-tag">RAG</span></div>
+            </div>
+            <div class="project-card-back">
+              <h3>Amaea: AI Compliance Platform</h3>
+              <p>Co-founding and building the technical architecture for Amaea. Building the compliance intelligence layer now: RAG on FCA documents, vector knowledge base, Claude-powered compliance assistant.</p>
+              <a href="https://amaea0002-dev.github.io/webpage" class="project-link">View Amaea →</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -633,9 +659,9 @@
 <script src="animations.js"></script>
 <script>
 // Card flip
-document.querySelectorAll('.agent-card-wrap').forEach(wrap => {
+document.querySelectorAll('.agent-card-wrap, .project-card-wrap').forEach(wrap => {
   wrap.addEventListener('click', () => {
-    wrap.querySelector('.agent-card').classList.toggle('flipped');
+    wrap.querySelector('.agent-card, .project-card').classList.toggle('flipped');
   });
 });
 
