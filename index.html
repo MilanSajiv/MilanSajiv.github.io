@@ -54,7 +54,8 @@
     .stat-box .label { color: #8b7eaa; font-size: 0.85rem; margin-top: 4px; }
 
     /* Agent cards */
-    .agent-card { background-color: #16131f; border: 1px solid #2d2040; border-radius: 12px; padding: 32px; height: 100%; }
+    .agent-card { background-color: #16131f; border: 1px solid #2d2040; border-radius: 12px; padding: 32px; height: 100%; transition: border-color 0.2s; }
+    .agent-card:hover { border-color: #a78bfa; }
     .agent-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 16px; }
     .agent-icon.blue { background-color: #1c3a5e; }
     .agent-icon.green { background-color: #1a3a2a; }
@@ -62,6 +63,25 @@
     .agent-card h3 { color: #f0eafa; font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
     .agent-card p { color: #8b7eaa; font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px; }
     .agent-tag { background-color: #0d0a14; border: 1px solid #2d2040; color: #8b7eaa; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; margin-right: 4px; margin-bottom: 4px; display: inline-block; }
+
+    /* Agent scroll */
+    .agent-scroll-wrapper { position: relative; margin-bottom: 40px; }
+    .agent-scroll-wrapper::after { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: calc(100% - 36px); background: linear-gradient(to right, transparent, #16131f); pointer-events: none; border-radius: 0 12px 12px 0; }
+    .agent-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .agent-scroll-dots { display: none; justify-content: center; gap: 8px; margin-top: 16px; }
+    .agent-dot { width: 6px; height: 6px; border-radius: 50%; background-color: #2d2040; border: none; padding: 0; cursor: pointer; transition: background-color 0.2s, transform 0.2s; }
+    .agent-dot.active { background-color: #a78bfa; transform: scale(1.3); }
+    @media (max-width: 1100px) {
+      .agent-scroll-wrapper::after { display: block; }
+      .agent-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 16px; padding-bottom: 4px; }
+      .agent-grid::-webkit-scrollbar { display: none; }
+      .agent-grid-item { min-width: 270px; flex-shrink: 0; scroll-snap-align: start; }
+      .agent-scroll-dots { display: flex; }
+    }
+    @media (min-width: 1101px) {
+      .agent-scroll-wrapper::after { display: none; }
+      .agent-grid-item { min-width: 0; }
+    }
 
     /* Timeline */
     .timeline { position: relative; padding-left: 32px; }
@@ -269,56 +289,64 @@
     <div class="section-title">Four agents. One system.</div>
     <p class="section-sub">Built on Claude Code, a memory-powered personal AI system covering study, life planning, health, and building Amaea. Each agent reads from a shared memory store and is triggered by natural language.</p>
 
-    <div style="display:flex;gap:20px;overflow-x:auto;padding-bottom:12px;margin-bottom:40px;" class="agent-scroll">
-      <div style="min-width:260px;max-width:280px;flex-shrink:0;">
-        <div class="agent-card">
-          <div class="agent-icon blue">📚</div>
-          <h3>Tutor Agent</h3>
-          <p>Teaches data science, machine learning, Python, SQL, and AI from first principles. Anchors new concepts to mathematics and physics analogies. Tracks weak areas and builds from foundations up.</p>
-          <div class="mt-3">
-            <span class="agent-tag">Python</span>
-            <span class="agent-tag">ML</span>
-            <span class="agent-tag">SQL</span>
-            <span class="agent-tag">AIMA</span>
+    <div class="agent-scroll-wrapper">
+      <div class="agent-grid" id="agentGrid">
+        <div class="agent-grid-item">
+          <div class="agent-card">
+            <div class="agent-icon blue">📚</div>
+            <h3>Tutor Agent</h3>
+            <p>Teaches data science, machine learning, Python, SQL, and AI from first principles. Anchors new concepts to mathematics and physics analogies. Tracks weak areas and builds from foundations up.</p>
+            <div class="mt-3">
+              <span class="agent-tag">Python</span>
+              <span class="agent-tag">ML</span>
+              <span class="agent-tag">SQL</span>
+              <span class="agent-tag">AIMA</span>
+            </div>
+          </div>
+        </div>
+        <div class="agent-grid-item">
+          <div class="agent-card">
+            <div class="agent-icon green">📅</div>
+            <h3>Life Planner Agent</h3>
+            <p>Manages weekly schedules, daily check-ins, goal tracking, and decision support. Knows my work pattern, commute, girlfriend schedule, and energy levels, planning realistically around all of them.</p>
+            <div class="mt-3">
+              <span class="agent-tag">Weekly planning</span>
+              <span class="agent-tag">Goals</span>
+              <span class="agent-tag">Check-ins</span>
+            </div>
+          </div>
+        </div>
+        <div class="agent-grid-item">
+          <div class="agent-card">
+            <div class="agent-icon purple">💪</div>
+            <h3>Fitness & Health Agent</h3>
+            <p>Manages my gym programme, meal plan, step targets, sleep habits, and body measurements. Built around a knee tendon issue, a 5am gym preference, and a recomposition goal for Summer 2027.</p>
+            <div class="mt-3">
+              <span class="agent-tag">3x gym/week</span>
+              <span class="agent-tag">Diet</span>
+              <span class="agent-tag">Recovery</span>
+            </div>
+          </div>
+        </div>
+        <div class="agent-grid-item">
+          <div class="agent-card">
+            <div class="agent-icon" style="background-color:#2a1a1a;">🏦</div>
+            <h3>Amaea Agent</h3>
+            <p>Co-pilot for building Amaea, the AI compliance platform for UK IFA firms. Handles product strategy, FCA research, pricing, GTM, roadmap, and technical build decisions.</p>
+            <div class="mt-3">
+              <span class="agent-tag">Product</span>
+              <span class="agent-tag">FCA compliance</span>
+              <span class="agent-tag">Strategy</span>
+              <span class="agent-tag">GTM</span>
+            </div>
           </div>
         </div>
       </div>
-      <div style="min-width:260px;max-width:280px;flex-shrink:0;">
-        <div class="agent-card">
-          <div class="agent-icon green">📅</div>
-          <h3>Life Planner Agent</h3>
-          <p>Manages weekly schedules, daily check-ins, goal tracking, and decision support. Knows my work pattern, commute, girlfriend schedule, and energy levels, planning realistically around all of them.</p>
-          <div class="mt-3">
-            <span class="agent-tag">Weekly planning</span>
-            <span class="agent-tag">Goals</span>
-            <span class="agent-tag">Check-ins</span>
-          </div>
-        </div>
-      </div>
-      <div style="min-width:260px;max-width:280px;flex-shrink:0;">
-        <div class="agent-card">
-          <div class="agent-icon purple">💪</div>
-          <h3>Fitness & Health Agent</h3>
-          <p>Manages my gym programme, meal plan, step targets, sleep habits, and body measurements. Built around a knee tendon issue, a 5am gym preference, and a recomposition goal for Summer 2027.</p>
-          <div class="mt-3">
-            <span class="agent-tag">3x gym/week</span>
-            <span class="agent-tag">Diet</span>
-            <span class="agent-tag">Recovery</span>
-          </div>
-        </div>
-      </div>
-      <div style="min-width:260px;max-width:280px;flex-shrink:0;">
-        <div class="agent-card">
-          <div class="agent-icon" style="background-color:#2a1a1a;">🏦</div>
-          <h3>Amaea Agent</h3>
-          <p>Co-pilot for building Amaea, the AI compliance platform for UK IFA firms. Handles product strategy, FCA research, pricing, GTM, roadmap, and technical build decisions.</p>
-          <div class="mt-3">
-            <span class="agent-tag">Product</span>
-            <span class="agent-tag">FCA compliance</span>
-            <span class="agent-tag">Strategy</span>
-            <span class="agent-tag">GTM</span>
-          </div>
-        </div>
+      <div class="agent-scroll-dots" id="agentDots">
+        <button class="agent-dot active" data-index="0"></button>
+        <button class="agent-dot" data-index="1"></button>
+        <button class="agent-dot" data-index="2"></button>
+        <button class="agent-dot" data-index="3"></button>
       </div>
     </div>
 
@@ -574,5 +602,34 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="animations.js"></script>
+<script>
+(function() {
+  const grid = document.getElementById('agentGrid');
+  const dots = document.querySelectorAll('.agent-dot');
+  if (!grid || !dots.length) return;
+
+  function updateDots() {
+    const items = grid.querySelectorAll('.agent-grid-item');
+    const scrollLeft = grid.scrollLeft;
+    let closest = 0;
+    let minDist = Infinity;
+    items.forEach((item, i) => {
+      const dist = Math.abs(item.offsetLeft - scrollLeft);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+  }
+
+  grid.addEventListener('scroll', updateDots, { passive: true });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const items = grid.querySelectorAll('.agent-grid-item');
+      const target = items[parseInt(dot.dataset.index)];
+      if (target) grid.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
 </body>
 </html>
