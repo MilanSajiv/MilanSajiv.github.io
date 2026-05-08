@@ -68,15 +68,14 @@
     .agent-scroll-wrapper { position: relative; margin-bottom: 40px; }
     .agent-scroll-wrapper::after { content: ''; position: absolute; top: 0; right: 0; width: 80px; height: calc(100% - 36px); background: linear-gradient(to right, transparent, #16131f); pointer-events: none; border-radius: 0 12px 12px 0; }
     .agent-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .agent-scroll-dots { display: none; justify-content: center; gap: 8px; margin-top: 16px; }
-    .agent-dot { width: 6px; height: 6px; border-radius: 50%; background-color: #2d2040; border: none; padding: 0; cursor: pointer; transition: background-color 0.2s, transform 0.2s; }
-    .agent-dot.active { background-color: #a78bfa; transform: scale(1.3); }
+    .agent-scroll-bar { display: none; margin-top: 16px; height: 3px; background-color: #1e1a2e; border-radius: 99px; overflow: hidden; }
+    .agent-scroll-bar-fill { height: 100%; width: 25%; background: linear-gradient(to right, #7c3aed, #a78bfa); border-radius: 99px; transition: width 0.25s cubic-bezier(0.4,0,0.2,1); }
     @media (max-width: 1100px) {
       .agent-scroll-wrapper::after { display: block; }
       .agent-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 16px; padding-bottom: 4px; }
       .agent-grid::-webkit-scrollbar { display: none; }
       .agent-grid-item { min-width: 270px; max-width: 270px; flex-shrink: 0; scroll-snap-align: start; }
-      .agent-scroll-dots { display: flex; }
+      .agent-scroll-bar { display: block; }
       .agent-card { word-wrap: break-word; overflow-wrap: break-word; }
       .agent-card h3 { white-space: normal; }
       .agent-card p { white-space: normal; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
@@ -353,11 +352,8 @@
           </div>
         </div>
       </div>
-      <div class="agent-scroll-dots" id="agentDots">
-        <button class="agent-dot active" data-index="0"></button>
-        <button class="agent-dot" data-index="1"></button>
-        <button class="agent-dot" data-index="2"></button>
-        <button class="agent-dot" data-index="3"></button>
+      <div class="agent-scroll-bar" id="agentScrollBar">
+        <div class="agent-scroll-bar-fill" id="agentScrollFill"></div>
       </div>
     </div>
 
@@ -616,42 +612,31 @@
 <script>
 (function() {
   const grid = document.getElementById('agentGrid');
-  const dotsContainer = document.getElementById('agentDots');
-  const dots = document.querySelectorAll('.agent-dot');
-  if (!grid || !dots.length) return;
+  const bar = document.getElementById('agentScrollBar');
+  const fill = document.getElementById('agentScrollFill');
+  if (!grid || !bar || !fill) return;
 
   function isScrollable() {
     return grid.scrollWidth > grid.clientWidth + 4;
   }
 
+  function updateBar() {
+    if (!isScrollable()) { bar.style.display = 'none'; return; }
+    const maxScroll = grid.scrollWidth - grid.clientWidth;
+    const progress = maxScroll > 0 ? grid.scrollLeft / maxScroll : 0;
+    const minWidth = (grid.clientWidth / grid.scrollWidth) * 100;
+    const fillWidth = minWidth + progress * (100 - minWidth);
+    fill.style.width = fillWidth + '%';
+  }
+
   function updateVisibility() {
-    dotsContainer.style.display = isScrollable() ? 'flex' : 'none';
+    bar.style.display = isScrollable() ? 'block' : 'none';
+    updateBar();
   }
 
-  function updateDots() {
-    if (!isScrollable()) return;
-    const items = grid.querySelectorAll('.agent-grid-item');
-    const scrollLeft = grid.scrollLeft;
-    let closest = 0;
-    let minDist = Infinity;
-    items.forEach((item, i) => {
-      const dist = Math.abs(item.offsetLeft - scrollLeft);
-      if (dist < minDist) { minDist = dist; closest = i; }
-    });
-    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
-  }
-
-  grid.addEventListener('scroll', updateDots, { passive: true });
+  grid.addEventListener('scroll', updateBar, { passive: true });
   window.addEventListener('resize', updateVisibility);
   updateVisibility();
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const items = grid.querySelectorAll('.agent-grid-item');
-      const target = items[parseInt(dot.dataset.index)];
-      if (target) grid.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
-    });
-  });
 })();
 </script>
 </body>
