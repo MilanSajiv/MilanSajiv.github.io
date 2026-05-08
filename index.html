@@ -616,10 +616,20 @@
 <script>
 (function() {
   const grid = document.getElementById('agentGrid');
+  const dotsContainer = document.getElementById('agentDots');
   const dots = document.querySelectorAll('.agent-dot');
   if (!grid || !dots.length) return;
 
+  function isScrollable() {
+    return grid.scrollWidth > grid.clientWidth + 4;
+  }
+
+  function updateVisibility() {
+    dotsContainer.style.display = isScrollable() ? 'flex' : 'none';
+  }
+
   function updateDots() {
+    if (!isScrollable()) return;
     const items = grid.querySelectorAll('.agent-grid-item');
     const scrollLeft = grid.scrollLeft;
     let closest = 0;
@@ -632,6 +642,8 @@
   }
 
   grid.addEventListener('scroll', updateDots, { passive: true });
+  window.addEventListener('resize', updateVisibility);
+  updateVisibility();
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
