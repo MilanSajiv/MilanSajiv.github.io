@@ -1,3 +1,19 @@
+// Dark mode — apply saved theme before render (called from inline head script)
+window.toggleTheme = function() {
+  var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  _syncThemeUI(next);
+};
+function _syncThemeUI(theme) {
+  document.querySelectorAll('.theme-icon-moon').forEach(function(el) { el.style.display = theme === 'dark' ? 'none' : 'block'; });
+  document.querySelectorAll('.theme-icon-sun').forEach(function(el) { el.style.display = theme === 'dark' ? 'block' : 'none'; });
+  document.querySelectorAll('.navbar-toggler span').forEach(function(s) { s.style.background = theme === 'dark' ? '#f0eafa' : '#17131E'; });
+}
+document.addEventListener('DOMContentLoaded', function() {
+  _syncThemeUI(document.documentElement.getAttribute('data-theme') || 'light');
+});
+
 // Scroll-triggered fade-up animations
 document.addEventListener('DOMContentLoaded', () => {
   const observer = new IntersectionObserver((entries) => {
