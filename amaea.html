@@ -152,8 +152,13 @@
       <div class="group-header"><div class="group-letter">B</div><div class="group-title">Website and prototype</div></div>
       <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>Marketing website live</strong> — index, features, pricing, contact pages on GitHub Pages.</div><div class="check-date">2025 ✓</div></div>
       <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>Pricing confirmed</strong> — Essential £699/month, Professional £1,599/month, Scale £2,199/month, Enterprise custom. Founders programme: 20% lifetime discount, first 200 firms.</div><div class="check-date">May 2026 ✓</div></div>
-      <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>MVP app deployed</strong> — full Next.js 16 + Supabase app live at amaea.vercel.app. Auth, onboarding, dashboard, clients, AI assistant, insights, reports, integrations. 247-client seed data. Mobile responsive.</div><div class="check-date">May 2026 ✓</div></div>
+      <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>MVP app deployed</strong> — full Next.js 16 + Supabase app live at app.amaea.co.uk. Auth, onboarding, dashboard, clients, AI assistant, insights, reports, integrations. 247-client seed data. Mobile responsive.</div><div class="check-date">May 2026 ✓</div></div>
       <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>AI assistant live</strong> — Claude Sonnet 4.6 with FCA knowledge base (173 chunks, 12+ regulatory areas). Persistent chat via React Context.</div><div class="check-date">May 2026 ✓</div></div>
+      <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>RMAR Section F Slice 1 shipped</strong> — pure aggregator (<code>src/lib/rmar/section-f.ts</code>, 23 vitest tests), GET API at <code>/api/rmar/section-f</code> (JSON + <code>?format=csv</code>), UI at <code>/reports/rmar/section-f</code> with period selector, F.1–F.5 table, byRootCause / byAdviser breakdowns, inline DISP 1.6 8-week breach callout, Copy + Export CSV. Last Phase 1 product feature; Slices 2 (D+F+J PDF+CSV) and 3 (full RMAR draft) deferred.</div><div class="check-date">15 May 2026 ✓</div></div>
+      <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>App root redirect fixed</strong> — <code>/</code> now redirects authenticated users to <code>/dashboard</code> (was the create-next-app boilerplate).</div><div class="check-date">15 May 2026 ✓</div></div>
+      <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>Public chat CORS fixed</strong> — <code>/api/public/chat</code> now callable from amaea.co.uk for the marketing site.</div><div class="check-date">15 May 2026 ✓</div></div>
+      <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>Marketing site About refactored</strong> — Mission-first / Vision-second layout on amaea.co.uk with plum left-border accent; duplicate Values block removed.</div><div class="check-date">15 May 2026 ✓</div></div>
+      <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>Demo request form rebuilt</strong> — Vercel serverless function calling Resend HTTP API replaces formsubmit.co. Routes to milan@ and hasna@ via comma-separated <code>DEMO_TO_EMAIL</code>.</div><div class="check-date">15 May 2026 ✓</div></div>
       <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>RAG pipeline built</strong> — pgvector embeddings, dual retrieval (FCA corpus + firm-specific), ai_metadata logging on every AI call.</div><div class="check-date">2026</div></div>
       <div class="check-item"><div class="check-box"></div><div class="check-text"><strong>Horizon v1</strong> — regulatory monitoring: hourly FCA source checking, firm-specific impact analysis, remediation proposals generated automatically.</div><div class="check-date">H1 2027</div></div>
     </div>
@@ -171,6 +176,8 @@
       <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>Stack decided</strong> — Next.js + TypeScript (frontend), Supabase/PostgreSQL (backend/DB), Claude API + pgvector (AI layer), Vercel (hosting).</div><div class="check-date">May 2026 ✓</div></div>
       <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>Intelligence layer stack decided</strong> — Python, sentence-transformers, Supabase pgvector, Anthropic SDK.</div><div class="check-date">May 2026 ✓</div></div>
       <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>Product architecture designed and built</strong> — 14 SQL migrations, RLS, computed views, append-only audit trail. RAG architecture designed (pgvector, Voyage AI, dual retrieval).</div><div class="check-date">May 2026 ✓</div></div>
+      <div class="check-item"><div class="check-box done"></div><div class="check-text"><strong>Email infrastructure stood up</strong> — brand-aligned HTML signatures for both co-founders (Inter, plum #40243F, logo + tagline + confidentiality notice) saved in <code>amaea-website/assets/</code>. <code>DEMO_TO_EMAIL</code> wired on Vercel; <code>founders@</code> confirmed as a Google Group, not a mailbox.</div><div class="check-date">15 May 2026 ✓</div></div>
+      <div class="check-item"><div class="check-box progress"></div><div class="check-text"><strong>DMARC tighten to p=reject</strong> — quarantine live since 8 May 2026, ~7 days of monitoring; switch to reject on 22 May 2026.</div><div class="check-date">22 May 2026</div></div>
     </div>
 
     <!-- Launch checklist -->
@@ -199,7 +206,7 @@
 
 <footer>
   <div class="container">
-    <p><a href="index.html">Back to home</a> &nbsp;·&nbsp; <a href="https://amaea0002-dev.github.io/webpage" target="_blank">Amaea website</a></p>
+    <p><a href="index.html">Back to home</a> &nbsp;·&nbsp; <a href="https://amaea.co.uk" target="_blank">Amaea website</a> &nbsp;·&nbsp; <a href="https://app.amaea.co.uk" target="_blank">Product app</a></p>
   </div>
 </footer>
 
